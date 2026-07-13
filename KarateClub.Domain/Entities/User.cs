@@ -149,6 +149,12 @@ namespace KarateClub.Domain.Entities
                 _permissions.Add(permission);
         }
 
+        public void AddPermission(Permission permission)
+        {
+            ArgumentNullException.ThrowIfNull(permission);
+            _permissions.Add(permission);
+        }
+
         private static void _ValidateUsername(string username)
         {
             if (string.IsNullOrWhiteSpace(username))

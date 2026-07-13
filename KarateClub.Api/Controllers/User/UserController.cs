@@ -27,7 +27,7 @@ namespace KarateClub.Api.Controllers.User
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<CurrentUserDto>> GetUsers()
+        public async Task<ActionResult<UserDto>> GetUsers()
         {
             return Ok(await _users.ExecuteAsync());
         }
@@ -37,7 +37,7 @@ namespace KarateClub.Api.Controllers.User
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<CurrentUserDto>> Me()
+        public async Task<ActionResult<UserDetialsDto>> Me()
         {
             return Ok(await _current.ExecuteAsync());
         }

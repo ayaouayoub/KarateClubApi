@@ -13,3 +13,4 @@ C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Road
 C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Application\obj\Debug\net8.0\refint\KarateClub.Application.dll
 C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Application\obj\Debug\net8.0\KarateClub.Application.pdb
 C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Application\obj\Debug\net8.0\ref\KarateClub.Application.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Application\obj\Debug\net8.0\KarateClub.Application.sourcelink.json

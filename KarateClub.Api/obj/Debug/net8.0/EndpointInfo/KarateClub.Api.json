@@ -87,17 +87,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CurrentUserDto"
+                  "$ref": "#/components/schemas/UserDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CurrentUserDto"
+                  "$ref": "#/components/schemas/UserDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CurrentUserDto"
+                  "$ref": "#/components/schemas/UserDto"
                 }
               }
             }
@@ -179,17 +179,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CurrentUserDto"
+                  "$ref": "#/components/schemas/UserDetialsDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CurrentUserDto"
+                  "$ref": "#/components/schemas/UserDetialsDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CurrentUserDto"
+                  "$ref": "#/components/schemas/UserDetialsDto"
                 }
               }
             }
@@ -223,36 +223,11 @@
   },
   "components": {
     "schemas": {
-      "CurrentUserDto": {
+      "Email": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "username": {
+          "value": {
             "type": "string",
-            "nullable": true
-          },
-          "isSuperAdmin": {
-            "type": "boolean"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "personId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "permissions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PermissionDto"
-            },
             "nullable": true
           }
         },
@@ -299,6 +274,27 @@
         },
         "additionalProperties": false
       },
+      "PersonDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "$ref": "#/components/schemas/Email"
+          }
+        },
+        "additionalProperties": false
+      },
       "ProblemDetails": {
         "type": "object",
         "properties": {
@@ -326,6 +322,44 @@
         },
         "additionalProperties": { }
       },
+      "UserDetialsDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "isSuperAdmin": {
+            "type": "boolean"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "personId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "personDto": {
+            "$ref": "#/components/schemas/PersonDto"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UserDto": {
         "type": "object",
         "properties": {
@@ -350,6 +384,13 @@
           "personId": {
             "type": "integer",
             "format": "int32"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PermissionDto"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -85,3 +85,4 @@ C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Road
 C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api\obj\Debug\net8.0\KarateClub.Api.pdb
 C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api\obj\Debug\net8.0\KarateClub.Api.genruntimeconfig.cache
 C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api\obj\Debug\net8.0\ref\KarateClub.Api.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api\obj\Debug\net8.0\KarateClub.Api.sourcelink.json

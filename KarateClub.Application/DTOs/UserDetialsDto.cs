@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KarateClub.Application.DTOs
 {
-    internal class UserDetialsDto
+    public class UserDetialsDto
     {
         public int Id { get; set; }
         public string? Username { get; set; }

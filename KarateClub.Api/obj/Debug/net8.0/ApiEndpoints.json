@@ -49,7 +49,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "KarateClub.Application.DTOs.CurrentUserDto",
+        "Type": "KarateClub.Application.DTOs.UserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -101,7 +101,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "KarateClub.Application.DTOs.CurrentUserDto",
+        "Type": "KarateClub.Application.DTOs.UserDetialsDto",
         "MediaTypes": [
           "text/plain",
           "application/json",

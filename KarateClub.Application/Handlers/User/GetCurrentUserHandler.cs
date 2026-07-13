@@ -16,14 +16,14 @@ namespace KarateClub.Application.Handlers.User
             _currentUser = currentUser;
         }
 
-        public async Task<CurrentUserDto> ExecuteAsync()
+        public async Task<UserDetialsDto> ExecuteAsync()
         {
             var user = await _repo.GetByIdAsync(_currentUser.UserId);
 
             if (user == null)
                 throw new Exception("User not found.");
 
-            return new CurrentUserDto
+            return new UserDetialsDto
             {
                 Id = user.Id,
                 Username = user.Username,
@@ -31,11 +31,20 @@ namespace KarateClub.Application.Handlers.User
                 IsActive = user.IsActive,
                 CreatedAt = user.CreatedAt,
                 PersonId = user.PersonId,
-                Permissions = user.Permissions.Select(p => new PermissionDto
+
+                PersonDto = new PersonDto
+                {
+                    Id = user.PersonId,
+                    Address = user.Person?.Address,
+                    Email = user.Person?.Email,
+                    Name = user.Person?.Name
+                },
+
+                Permissions = user.Permissions?.Select(p => new PermissionDto
                 {
                     Id = p.Id,
                     Code = p.Code
-                }).ToList().AsReadOnly()
+                }).ToList()
             };
         }
     }

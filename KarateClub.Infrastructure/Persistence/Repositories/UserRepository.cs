@@ -136,9 +136,10 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return user;
         }
 
+        // deleting CurretnUserDto and keep up with UserDto and modifying GetUsersAsync to get users with thier permissions
         public async Task<List<User>> GetUsersAsync()
         {
-            List<User> users = new();
+            Dictionary<int, User> users = new();
 
             using SqlConnection connection = _connectionFactory.CreateConnection();
 
@@ -152,22 +153,35 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
 
             while (await reader.ReadAsync())
             {
-                users.Add
-                (
-                    User.Load
+                int Id = (int)reader["UserId"];
+
+                if (users.ContainsKey(Id))
+                {
+                    if (reader["PermissionId"] != DBNull.Value)
+                    {
+                        users[Id].AddPermission(Permission.Load((int)reader["PermissionId"], (string)reader["Code"]));
+                    }
+                }
+                else
+                {
+                    users.Add
                     (
-                        id: (int)reader["UserId"],
-                        username: (string)reader["Username"],
-                        passwordHash: (string)reader["PasswordHash"],
-                        isSuperAdmin: (bool)reader["IsSuperAdmin"],
-                        isActive: (bool)reader["IsActive"],
-                        createdAt: (DateTime)reader["CreatedAt"],
-                        personId: (int)reader["PersonId"]
-                    )
-                );
+                        Id,
+                        User.Load
+                        (
+                            id: Id,
+                            username: (string)reader["Username"],
+                            passwordHash: (string)reader["PasswordHash"],
+                            isSuperAdmin: (bool)reader["IsSuperAdmin"],
+                            isActive: (bool)reader["IsActive"],
+                            createdAt: (DateTime)reader["CreatedAt"],
+                            personId: (int)reader["PersonId"]
+                        )
+                    );
+                }
             }
 
-            return users;
+            return users.Values.ToList();
         }
     }
 }

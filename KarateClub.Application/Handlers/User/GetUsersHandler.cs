@@ -36,7 +36,12 @@ namespace KarateClub.Application.Handlers.User
                         IsSuperAdmin = user.IsSuperAdmin,
                         IsActive = user.IsActive,
                         PersonId = user.PersonId,
-                        CreatedAt = user.CreatedAt
+                        CreatedAt = user.CreatedAt,
+                        Permissions = user.Permissions.Select(p => new PermissionDto
+                        {
+                            Id = p.Id,
+                            Code = p.Code
+                        }).ToList()
                     }
                 );
             }
