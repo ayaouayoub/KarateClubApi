@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Domain.Entities;
 using KarateClub.Domain.ValueObjs;
@@ -25,14 +20,10 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
         {
             User? user = null;
 
-            List<Permission> permissions = new();
-
             using SqlConnection connection = _connectionFactory.CreateConnection();
-
             using SqlCommand command = new("usp_GetUserByID", connection);
 
             command.CommandType = CommandType.StoredProcedure;
-
             command.Parameters.AddWithValue("@UserID", id);
 
             await connection.OpenAsync();
@@ -45,7 +36,7 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
                 {
                     Person person = Person.Load
                     (
-                        id: (int)reader["PersonID"],
+                        id: (int)reader["PersonId"],
                         name: (string)reader["Name"],
                         address: reader["Address"] as string,
                         email: new Email((string)reader["Email"])
@@ -63,40 +54,20 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
                     );
                 }
 
-                if (reader["PermissionId"] != DBNull.Value)
-                {
-                    permissions.Add
-                    (
-                        Permission.Load
-                        (
-                            id: (int)reader["PermissionId"],
-                            code: (string)reader["Code"]
-                        )
-                    );
-                }
-            }
-
-            if (user is not null)
-            {
-                user.SetPermissions(permissions);
+                AddPermissionIfExists(reader, user);
             }
 
             return user;
         }
 
-
         public async Task<User?> GetByUsernameAsync(string username)
         {
             User? user = null;
 
-            List<Permission> permissions = new();
-
             using SqlConnection connection = _connectionFactory.CreateConnection();
-
             using SqlCommand command = new("usp_GetUserByUserName", connection);
 
             command.CommandType = CommandType.StoredProcedure;
-
             command.Parameters.AddWithValue("@UserName", username);
 
             await connection.OpenAsync();
@@ -119,30 +90,17 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
                     );
                 }
 
-                if (reader["PermissionId"] != DBNull.Value)
-                {
-                    permissions.Add(Permission.Load((int)reader["PermissionId"], (string)reader["Code"]));
-                } else
-                {
-                    break;
-                }
-            }
-
-            if (user is not null)
-            {
-                user.SetPermissions(permissions);
+                AddPermissionIfExists(reader, user);
             }
 
             return user;
         }
 
-        // deleting CurretnUserDto and keep up with UserDto and modifying GetUsersAsync to get users with thier permissions
         public async Task<List<User>> GetUsersAsync()
         {
             Dictionary<int, User> users = new();
 
             using SqlConnection connection = _connectionFactory.CreateConnection();
-
             using SqlCommand command = new("usp_GetUsers", connection);
 
             command.CommandType = CommandType.StoredProcedure;
@@ -153,35 +111,46 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
 
             while (await reader.ReadAsync())
             {
-                int Id = (int)reader["UserId"];
+                int userId = (int)reader["UserId"];
 
-                if (users.ContainsKey(Id))
+                if (!users.TryGetValue(userId, out User? user))
                 {
-                    if (reader["PermissionId"] != DBNull.Value)
-                    {
-                        users[Id].AddPermission(Permission.Load((int)reader["PermissionId"], (string)reader["Code"]));
-                    }
-                }
-                else
-                {
-                    users.Add
+                    user = User.Load
                     (
-                        Id,
-                        User.Load
-                        (
-                            id: Id,
-                            username: (string)reader["Username"],
-                            passwordHash: (string)reader["PasswordHash"],
-                            isSuperAdmin: (bool)reader["IsSuperAdmin"],
-                            isActive: (bool)reader["IsActive"],
-                            createdAt: (DateTime)reader["CreatedAt"],
-                            personId: (int)reader["PersonId"]
-                        )
+                        id: userId,
+                        username: (string)reader["Username"],
+                        passwordHash: (string)reader["PasswordHash"],
+                        isSuperAdmin: (bool)reader["IsSuperAdmin"],
+                        isActive: (bool)reader["IsActive"],
+                        createdAt: (DateTime)reader["CreatedAt"],
+                        personId: (int)reader["PersonId"]
                     );
+
+                    users.Add(userId, user);
                 }
+
+                AddPermissionIfExists(reader, user);
             }
 
             return users.Values.ToList();
+        }
+
+        private static void AddPermissionIfExists(SqlDataReader reader, User? user)
+        {
+            if (user is null)
+                return;
+
+            if (reader["PermissionId"] == DBNull.Value)
+                return;
+
+            user.AddPermission
+            (
+                Permission.Load
+                (
+                    id: (int)reader["PermissionId"],
+                    code: (string)reader["Code"]
+                )
+            );
         }
     }
 }

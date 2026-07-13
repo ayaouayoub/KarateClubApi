@@ -36,7 +36,7 @@ namespace KarateClub.Application.Handlers.User
                 {
                     Id = user.PersonId,
                     Address = user.Person?.Address,
-                    Email = user.Person?.Email,
+                    Email = user.Person?.Email.Value,
                     Name = user.Person?.Name
                 },
 
