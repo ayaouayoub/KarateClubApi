@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "euxRKdOP4+BgkdLeuTBo9NlCpo2aTDA1cJHpQ+HosFs=",
+  "Source": "KarateClub.Api",
+  "BasePath": "_content/KarateClub.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

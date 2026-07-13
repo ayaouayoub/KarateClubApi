@@ -1,0 +1,17 @@
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\bin\Debug\net8.0\KarateClub.Infrastructure.deps.json
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\bin\Debug\net8.0\KarateClub.Infrastructure.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\bin\Debug\net8.0\KarateClub.Infrastructure.pdb
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\bin\Debug\net8.0\KarateClub.Application.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\bin\Debug\net8.0\KarateClub.Domain.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\bin\Debug\net8.0\KarateClub.Application.pdb
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\bin\Debug\net8.0\KarateClub.Domain.pdb
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\KarateClub.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\KarateClub.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\KarateClub.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\KarateClub.Infrastructure.AssemblyInfo.cs
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\KarateClub.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\KarateCl.DDB81736.Up2Date
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\KarateClub.Infrastructure.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\refint\KarateClub.Infrastructure.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\KarateClub.Infrastructure.pdb
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Infrastructure\obj\Debug\net8.0\ref\KarateClub.Infrastructure.dll

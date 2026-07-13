@@ -1,0 +1,11 @@
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\bin\Debug\net8.0\KarateClub.Domain.deps.json
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\bin\Debug\net8.0\KarateClub.Domain.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\bin\Debug\net8.0\KarateClub.Domain.pdb
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\obj\Debug\net8.0\KarateClub.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\obj\Debug\net8.0\KarateClub.Domain.AssemblyInfoInputs.cache
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\obj\Debug\net8.0\KarateClub.Domain.AssemblyInfo.cs
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\obj\Debug\net8.0\KarateClub.Domain.csproj.CoreCompileInputs.cache
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\obj\Debug\net8.0\KarateClub.Domain.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\obj\Debug\net8.0\refint\KarateClub.Domain.dll
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\obj\Debug\net8.0\KarateClub.Domain.pdb
+C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Domain\obj\Debug\net8.0\ref\KarateClub.Domain.dll

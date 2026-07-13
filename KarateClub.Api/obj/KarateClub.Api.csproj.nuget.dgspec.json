@@ -1,0 +1,326 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Api\\KarateClub.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Api\\KarateClub.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Api\\KarateClub.Api.csproj",
+        "projectName": "KarateClub.Api",
+        "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Api\\KarateClub.Api.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Application\\KarateClub.Application.csproj": {
+                "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Application\\KarateClub.Application.csproj"
+              },
+              "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Infrastructure\\KarateClub.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Infrastructure\\KarateClub.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.18, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Application\\KarateClub.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Application\\KarateClub.Application.csproj",
+        "projectName": "KarateClub.Application",
+        "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Application\\KarateClub.Application.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Domain\\KarateClub.Domain.csproj": {
+                "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Domain\\KarateClub.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Domain\\KarateClub.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Domain\\KarateClub.Domain.csproj",
+        "projectName": "KarateClub.Domain",
+        "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Domain\\KarateClub.Domain.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Infrastructure\\KarateClub.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Infrastructure\\KarateClub.Infrastructure.csproj",
+        "projectName": "KarateClub.Infrastructure",
+        "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Infrastructure\\KarateClub.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Application\\KarateClub.Application.csproj": {
+                "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Application\\KarateClub.Application.csproj"
+              },
+              "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Domain\\KarateClub.Domain.csproj": {
+                "projectPath": "C:\\Users\\hp\\Documents\\My Workspace\\programming-workspace\\Programming_Advice_Roadmap\\Restfull Api\\KarateClub\\KarateClub.Domain\\KarateClub.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[10.0.9, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.19.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

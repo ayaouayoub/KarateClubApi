@@ -1,0 +1,6 @@
+@KarateClub.Api_HostAddress = http://localhost:5076
+
+GET {{KarateClub.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
