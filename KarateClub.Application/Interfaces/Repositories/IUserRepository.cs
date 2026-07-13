@@ -13,5 +13,6 @@ namespace KarateClub.Application.Interfaces.Repositories
         Task<User?> GetByIdAsync(int id);
         Task<User?> GetByUsernameAsync(string username);
         Task<List<User>> GetUsersAsync();
+        Task<bool> DeactivateUserAsync(int id);
     }
 }
