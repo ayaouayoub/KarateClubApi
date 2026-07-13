@@ -10,6 +10,7 @@ using KarateClub.Infrastructure.Persistence;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Infrastructure.Persistence.Repositories;
 using KarateClub.Infrastructure.Authorization;
+using KarateClub.Application.Handlers.Person;
 
 namespace KarateClub.Api
 {
@@ -58,6 +59,8 @@ namespace KarateClub.Api
             builder.Services.AddScoped<GetUsersHandler>();
 
             builder.Services.AddScoped<DeactivateUserHandler>();
+
+            builder.Services.AddScoped<GetPesronHandler>();
 
             builder.Services.AddInfrastructure();
 

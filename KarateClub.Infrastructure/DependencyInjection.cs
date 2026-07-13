@@ -19,6 +19,8 @@ namespace KarateClub.Infrastructure
 
             services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddScoped<IPersonRepository, PersonRepository>();
+
             services.AddScoped<IEncryptionService, BCryptEncryptionService>();
 
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();

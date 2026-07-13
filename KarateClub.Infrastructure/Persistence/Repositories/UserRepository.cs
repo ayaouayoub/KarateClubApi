@@ -169,5 +169,54 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
 
             return affectedRows > 0;
         }
+
+        public async Task<int> AddUserAsync(User user)
+        {
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_AddNewUser", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@Username", user.Username);
+            command.Parameters.AddWithValue("@PasswordHash", user.PasswordHash);
+            command.Parameters.AddWithValue("@IsSuperAdmin", user.IsSuperAdmin);
+            command.Parameters.AddWithValue("@IsActive", user.IsActive);
+            command.Parameters.AddWithValue("@CreatedAt", user.CreatedAt);
+            command.Parameters.AddWithValue("@PersonId", user.PersonId);
+
+            DataTable permissions = new();
+
+            permissions.Columns.Add("PermissionId", typeof(int));
+
+            if (!user.IsSuperAdmin)
+            {
+                foreach (Permission permission in user.Permissions)
+                {
+                    permissions.Rows.Add(permission.Id);
+                }
+            }
+
+            SqlParameter permissionParameter = new("@Permissions", SqlDbType.Structured)
+            {
+                TypeName = "PermissionIdTableType",
+                Value = permissions
+            };
+
+            command.Parameters.Add(permissionParameter);
+
+            SqlParameter output = new("@NewUserID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            command.Parameters.Add(output);
+
+            await connection.OpenAsync();
+
+            await command.ExecuteNonQueryAsync();
+
+            return (int)output.Value;
+        }
     }
 }

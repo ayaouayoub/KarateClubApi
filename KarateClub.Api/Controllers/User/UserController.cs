@@ -29,6 +29,7 @@ namespace KarateClub.Api.Controllers.User
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<UserDto>> GetUsers()
         {
             return Ok(await _users.ExecuteAsync());

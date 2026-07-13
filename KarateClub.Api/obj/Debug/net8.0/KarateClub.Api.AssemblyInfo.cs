@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KarateClub.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ee9f94b5b4f4912147775592dee033f8d4d570e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c4d55e7b97d838a1b0b663d32faaaae54a5a6a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("KarateClub.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KarateClub.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
