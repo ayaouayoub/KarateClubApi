@@ -141,6 +141,11 @@ namespace KarateClub.Domain.Entities
         }
         public void SetPermissions(IEnumerable<Permission> permissions)
         {
+            if (IsSuperAdmin)
+            {
+                throw new DomainException("Cannot add permissions to super admin");
+            }
+
             ArgumentNullException.ThrowIfNull(permissions);
 
             _permissions.Clear();
@@ -151,6 +156,11 @@ namespace KarateClub.Domain.Entities
 
         public void AddPermission(Permission permission)
         {
+            if (IsSuperAdmin)
+            {
+                throw new DomainException("Cannot add permissions to super admin");
+            }
+
             ArgumentNullException.ThrowIfNull(permission);
             _permissions.Add(permission);
         }
