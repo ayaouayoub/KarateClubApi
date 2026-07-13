@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KarateClub.Application.DTOs;
+using KarateClub.Domain.Entities;
 
 namespace KarateClub.Application.Handlers.User.Commands
 {
@@ -11,9 +12,8 @@ namespace KarateClub.Application.Handlers.User.Commands
     {
         public int Id { get; set; }
         public string Username { get; set; } = null!;
-        public string PasswordHash { get; set; } = null!;
-        public bool IsSuperAdmin { get; set; }
+        public string Password { get; set; } = null!;
         public int PersonId { get; set; }
-        public IReadOnlyCollection<int>? Permissions { get; set; }
+        public IReadOnlyCollection<Permission>? Permissions { get; set; }
     }
 }

@@ -1,7 +1,9 @@
-﻿using KarateClub.Application.DTOs;
+﻿using KarateClub.Api.Controllers.User.Requests;
+using KarateClub.Application.DTOs;
 using KarateClub.Application.Handlers.User;
 using KarateClub.Application.Handlers.User.Commands;
 using KarateClub.Application.Security;
+using KarateClub.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +16,15 @@ namespace KarateClub.Api.Controllers.User
         private readonly GetCurrentUserHandler _current;
         private readonly GetUsersHandler _users;
         private readonly DeactivateUserHandler _deactivateUser;
+        private readonly AddUserHandler _addUserHandler;
 
-        public UserController(GetCurrentUserHandler current, GetUsersHandler users, DeactivateUserHandler deactivateUser)
+
+        public UserController(GetCurrentUserHandler current, GetUsersHandler users, DeactivateUserHandler deactivateUser, AddUserHandler addUserHandler)
         {
             _current = current;
             _users = users;
             _deactivateUser = deactivateUser;
+            _addUserHandler = addUserHandler;
         }
 
         [Authorize(Policy = Permissions.Users.View)]
@@ -57,6 +62,29 @@ namespace KarateClub.Api.Controllers.User
             await _deactivateUser.ExecuteAsync(new DeactivateUserCommand(id));
 
             return NoContent();
+        }
+
+        [Authorize(Policy = Permissions.Users.Create)]
+        [HttpPost]
+        [ProducesResponseType(typeof(UserDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<UserDto>> AddUser([FromBody] CreateUserRequest request)
+        {
+            var command = new CreateUserCommand
+            {
+                Username = request.Username,
+                Password = request.Password,
+                PersonId = request.PersonId,
+                Permissions = request.Permissions?.Select(p => Permission.Load(p.Id, p.Code)).ToList()
+            };
+
+            UserDto user = await _addUserHandler.ExecuteAsync(command);
+
+            return CreatedAtAction(nameof(GetUserById), new { id = user.Id },user);
         }
     }
 }
