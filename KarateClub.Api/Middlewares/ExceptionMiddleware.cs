@@ -48,7 +48,7 @@ namespace KarateClub.Api.Middlewares
 
                 await context.Response.WriteAsJsonAsync(new
                 {
-                    message = "Internal Server Error"
+                    message = "Internal Server Error: "
                 });
             }
         }

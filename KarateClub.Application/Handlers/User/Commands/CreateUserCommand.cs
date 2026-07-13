@@ -10,7 +10,6 @@ namespace KarateClub.Application.Handlers.User.Commands
 {
     public class CreateUserCommand
     {
-        public int Id { get; set; }
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
         public int PersonId { get; set; }

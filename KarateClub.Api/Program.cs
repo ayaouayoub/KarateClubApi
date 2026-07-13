@@ -60,14 +60,17 @@ namespace KarateClub.Api
 
             builder.Services.AddScoped<DeactivateUserHandler>();
 
+            builder.Services.AddScoped<GetUserHandler>();
+
             builder.Services.AddScoped<GetPesronHandler>();
+
+            builder.Services.AddScoped<AddUserHandler>();
 
             builder.Services.AddInfrastructure();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
-                options.TokenValidationParameters =
-                new TokenValidationParameters
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     
