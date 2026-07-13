@@ -6,9 +6,6 @@ using Microsoft.IdentityModel.Tokens;
 using KarateClub.Infrastructure;
 using KarateClub.Application.Security;
 using KarateClub.Api.Middlewares;
-using KarateClub.Infrastructure.Persistence;
-using KarateClub.Application.Interfaces.Repositories;
-using KarateClub.Infrastructure.Persistence.Repositories;
 using KarateClub.Infrastructure.Authorization;
 using KarateClub.Application.Handlers.Person;
 
@@ -65,6 +62,8 @@ namespace KarateClub.Api
             builder.Services.AddScoped<GetPesronHandler>();
 
             builder.Services.AddScoped<AddUserHandler>();
+
+            builder.Services.AddScoped<GetUserByPersonIdHandler>();
 
             builder.Services.AddInfrastructure();
 

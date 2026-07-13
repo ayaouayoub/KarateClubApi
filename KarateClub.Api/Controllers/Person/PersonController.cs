@@ -2,6 +2,8 @@
 using KarateClub.Application.DTOs;
 using KarateClub.Application.Handlers.Person;
 using KarateClub.Application.Handlers.Person.Queries;
+using KarateClub.Application.Handlers.User;
+using KarateClub.Application.Handlers.User.Queries;
 using KarateClub.Application.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -9,14 +11,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KarateClub.Api.Controllers.Person
 {
-    [Route("api/[controller]")]
+    [Route("api/persons")]
     [ApiController]
     public class PersonController : ControllerBase
     {
         private readonly GetPesronHandler _getPesront;
-        public PersonController(GetPesronHandler getPesront)
+        private readonly GetUserByPersonIdHandler _getUserByPersonIdHandler;
+
+        public PersonController(GetPesronHandler getPesront, GetUserByPersonIdHandler getUserByPersonIdHandler)
         {
             _getPesront = getPesront;
+            _getUserByPersonIdHandler = getUserByPersonIdHandler;
         }
 
         [Authorize]
@@ -28,6 +33,17 @@ namespace KarateClub.Api.Controllers.Person
         public async Task<ActionResult<PersonDto>> GetPersonById(int id)
         {
             return Ok(await _getPesront.ExecuteAsync(new GetPesonbByIdQuery(id)));
+        }
+
+        [Authorize]
+        [HttpGet("/api/persons/{personId:int}/user")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<UserWithoutPermissionsDto>> GetUserByPersonId(int personId)
+        {
+            return Ok(await _getUserByPersonIdHandler.ExecuteAsync(new GetUserByPersonIdQuery(personId)));
         }
     }
 }

@@ -20,7 +20,6 @@ namespace KarateClub.Api.Controllers.User
         private readonly AddUserHandler _addUserHandler;
         private readonly GetUserHandler _getUserHandler;
 
-
         public UserController
             (
             GetCurrentUserHandler current, 

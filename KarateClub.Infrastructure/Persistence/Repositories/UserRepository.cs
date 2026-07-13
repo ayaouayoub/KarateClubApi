@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Domain.Entities;
 using KarateClub.Domain.ValueObjs;
@@ -217,6 +218,37 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             await command.ExecuteNonQueryAsync();
 
             return (int)output.Value;
+        }
+
+        public async Task<User?> GetUserByPersonIdAsync(int personId)
+        {
+            User? user = null;
+
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+            using SqlCommand command = new("usp_GetUserByPersonId", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@PersonId", personId);
+
+            await connection.OpenAsync();
+
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                user = User.Load
+                (
+                    id: (int)reader["UserId"],
+                    username: (string)reader["Username"],
+                    passwordHash: (string)reader["PasswordHash"],
+                    isSuperAdmin: (bool)reader["IsSuperAdmin"],
+                    isActive: (bool)reader["IsActive"],
+                    createdAt: (DateTime)reader["CreatedAt"],
+                    personId: personId
+                );
+            }
+
+            return user;
         }
     }
 }
