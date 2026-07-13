@@ -1,4 +1,5 @@
-﻿using KarateClub.Domain.Exceptions;
+﻿using KarateClub.Application.Exceptions;
+using KarateClub.Domain.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
@@ -24,6 +25,15 @@ namespace KarateClub.Api.Middlewares
             catch (DomainException ex)
             {
                 context.Response.StatusCode = StatusCodes.Status400BadRequest;
+
+                await context.Response.WriteAsJsonAsync(new
+                {
+                    message = ex.Message
+                });
+            }
+            catch (NotFoundException ex)
+            {
+                context.Response.StatusCode = StatusCodes.Status404NotFound;
 
                 await context.Response.WriteAsJsonAsync(new
                 {

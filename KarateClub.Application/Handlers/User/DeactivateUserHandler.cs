@@ -7,6 +7,7 @@ using KarateClub.Application.DTOs;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Application.Interfaces;
 using KarateClub.Application.Handlers.User.Commands;
+using KarateClub.Application.Exceptions;
 
 namespace KarateClub.Application.Handlers.User
 {
@@ -24,7 +25,7 @@ namespace KarateClub.Application.Handlers.User
             var user = await _repo.GetByIdAsync(command.userId);
 
             if (user is null)
-                throw new Exception("User not found.");
+                throw new NotFoundException("User not found.");
 
             user.Deactivate();
 
