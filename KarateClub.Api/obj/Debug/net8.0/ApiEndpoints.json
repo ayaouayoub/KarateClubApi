@@ -42,7 +42,7 @@
   {
     "ContainingType": "KarateClub.Api.Controllers.Person.PersonController",
     "Method": "GetPersonById",
-    "RelativePath": "api/Person/{id}",
+    "RelativePath": "api/persons/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

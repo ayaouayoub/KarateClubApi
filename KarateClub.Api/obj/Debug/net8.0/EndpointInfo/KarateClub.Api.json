@@ -76,7 +76,7 @@
         }
       }
     },
-    "/api/Person/{id}": {
+    "/api/persons/{id}": {
       "get": {
         "tags": [
           "Person"

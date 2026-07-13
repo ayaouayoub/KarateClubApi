@@ -8,6 +8,7 @@ using KarateClub.Application.Handlers.User.Commands;
 using KarateClub.Application.Interfaces;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Application.Security;
+using KarateClub.Domain.Exceptions;
 
 namespace KarateClub.Application.Handlers.User
 {
@@ -28,8 +29,16 @@ namespace KarateClub.Application.Handlers.User
         public async Task<UserDto> ExecuteAsync(CreateUserCommand command)
         {
             var user = CreateUser(command, await _GetPerson(command.PersonId));
+
             SetPermissions(command.Permissions, user);
+
+            if (await _userRepository.GetUserByPersonIdAsync(command.PersonId) is not null)
+            {
+                throw new DomainException("this persone is associated with another user");
+            }
+
             int newUserId = await _userRepository.AddUserAsync(user);
+
             return new UserDto()
             {
                 Id = newUserId,
