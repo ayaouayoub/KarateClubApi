@@ -5,6 +5,7 @@ using KarateClub.Domain.Entities;
 using KarateClub.Domain.ValueObjs;
 using KarateClub.Infrastructure.Persistence.Data;
 using Microsoft.Data.SqlClient;
+using static KarateClub.Application.Security.Permissions;
 
 namespace KarateClub.Infrastructure.Persistence.Repositories
 {
@@ -270,6 +271,24 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
                 TypeName = "PermissionIdTableType",
                 Value = table
             };
+        }
+        
+        public async Task<bool> ChangeMyUsernameAsync(int userId, string username)
+        {
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_UpdateMyUsername", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@UserId", userId);
+            command.Parameters.AddWithValue("@Username", username);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
         }
     }
 }

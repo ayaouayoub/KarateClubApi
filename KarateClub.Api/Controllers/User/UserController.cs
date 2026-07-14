@@ -20,6 +20,7 @@ namespace KarateClub.Api.Controllers.User
         private readonly AddUserHandler _addUserHandler;
         private readonly GetUserHandler _getUserHandler;
         private readonly UpdateUserHandler _updateUserHandler;
+        private readonly ChangeMyUsernameHandler _changeMyUsernameHandler;
 
         public UserController
             (
@@ -28,7 +29,8 @@ namespace KarateClub.Api.Controllers.User
             DeactivateUserHandler deactivateUser,
             AddUserHandler addUserHandler,
             GetUserHandler getUserHandler,
-            UpdateUserHandler updateUserHandler)
+            UpdateUserHandler updateUserHandler,
+            ChangeMyUsernameHandler changeMyUsernameHandler)
         {
             _current = current;
             _users = users;
@@ -36,6 +38,7 @@ namespace KarateClub.Api.Controllers.User
             _addUserHandler = addUserHandler;
             _getUserHandler = getUserHandler;
             _updateUserHandler = updateUserHandler;
+            _changeMyUsernameHandler = changeMyUsernameHandler;
         }
 
         [Authorize(Policy = Permissions.Users.View)]
@@ -134,6 +137,18 @@ namespace KarateClub.Api.Controllers.User
             UserDto user = await _updateUserHandler.ExecuteAsync(command);
 
             return Ok(user);
+        }
+
+        [Authorize]
+        [HttpPatch("me/username")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ChangenMyUsername(ChangeMyUsernameRequest request)
+        {
+            await _changeMyUsernameHandler.ExecuteAsync(new UpdateMyUsernameCommand(request.Username));
+            return NoContent();
         }
     }
 }
