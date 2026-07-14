@@ -25,6 +25,8 @@ namespace KarateClub.Application.Handlers.User
 
         public async Task<UserDto> ExecuteAsync(UpdateUserCommand command)
         {
+            if (await _userRepository.GetByUsernameAsync(command.Username) is not null) throw new DomainException("Username already exists.");
+
             Domain.Entities.User user = await _userRepository.GetByIdAsync(command.UserId) ?? throw new NotFoundException("User not found.");
 
             Domain.Entities.Person person = await _personRepository.GetPersonById(command.PersonId) ?? throw new NotFoundException("Person not found.");
