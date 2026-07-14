@@ -8,16 +8,16 @@ using Microsoft.AspNetCore.Http;
 
 namespace KarateClub.Infrastructure.Authentication
 {
-    public sealed class JwtCurrentUser : ICurrentUser
+    public sealed class CurrentUserAccessor : ICurrentUser
     {
         private readonly IHttpContextAccessor _accessor;
 
-        public JwtCurrentUser(IHttpContextAccessor accessor)
+        public CurrentUserAccessor(IHttpContextAccessor accessor)
         {
             _accessor = accessor;
         }
 
-        private User User => (User)_accessor.HttpContext!.Items["CurrentUser"]!;
+        public User User => (User)_accessor.HttpContext!.Items["CurrentUser"]!;
 
         public int UserId => User.Id;
 

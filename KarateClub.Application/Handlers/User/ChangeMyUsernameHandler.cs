@@ -25,7 +25,7 @@ namespace KarateClub.Application.Handlers.User
 
         public async Task ExecuteAsync(UpdateMyUsernameCommand command)
         {
-            var user = await _userRepository.GetByIdAsync(_currentUser.UserId) ?? throw new NotFoundException("User not found.");
+            var user = _currentUser.User ?? throw new NotFoundException("User not found.");
 
             if (await _userRepository.GetByUsernameAsync(command.Username) is not null)
                 throw new DomainException("Username already exists.");

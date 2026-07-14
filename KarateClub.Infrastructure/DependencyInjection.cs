@@ -25,7 +25,7 @@ namespace KarateClub.Infrastructure
 
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
-            services.AddScoped<ICurrentUser, JwtCurrentUser>();
+            services.AddScoped<ICurrentUser, CurrentUserAccessor>();
 
             services.AddScoped<IDbConnectionFactory, SqlConnectionFactory>();
 

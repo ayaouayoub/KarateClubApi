@@ -26,7 +26,7 @@ namespace KarateClub.Application.Handlers.User
 
         public async Task ExecuteAsync(ChangeMyPasswordCommand command)
         {
-            var user = await _userRepository.GetByIdAsync(_currentUser.UserId) ?? throw new NotFoundException("User not found.");
+            var user = _currentUser.User ?? throw new NotFoundException("User not found.");
 
             if (!_encryptionService.Verify(command.CurrentPassword, user.PasswordHash))
                 throw new DomainException("Current password is incorrect.");

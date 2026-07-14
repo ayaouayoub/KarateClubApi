@@ -17,9 +17,9 @@ namespace KarateClub.Application.Handlers.User
             _currentUser = currentUser;
         }
 
-        public async Task<UserDetialsDto> ExecuteAsync()
+        public UserDetialsDto Execute()
         {
-            var user = await _repo.GetByIdAsync(_currentUser.UserId);
+            var user = _currentUser.User;
 
             if (user == null)
                 throw new NotFoundException("User not found.");

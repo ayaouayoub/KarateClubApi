@@ -9,6 +9,8 @@ namespace KarateClub.Application.Interfaces
 {
     public interface ICurrentUser
     {
+        User User { get; }
+
         int UserId { get; }
 
         string Username { get; }
