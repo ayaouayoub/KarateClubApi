@@ -7,6 +7,7 @@ using KarateClub.Application.DTOs;
 using KarateClub.Application.Handlers.User.Commands;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Application.Interfaces;
+using KarateClub.Application.Exceptions;
 
 namespace KarateClub.Application.Handlers.User
 {
@@ -30,6 +31,8 @@ namespace KarateClub.Application.Handlers.User
             var user = await _repo.GetByUsernameAsync(command.Username);
 
             if (user == null || !_encryption.Verify(command.Password, user.PasswordHash)) throw new Exception("Invalid credentials.");
+
+            if (!user.IsActive) throw new ForbiddenException("Your account is inactive.");
 
             return new LoginResponseDto
             {

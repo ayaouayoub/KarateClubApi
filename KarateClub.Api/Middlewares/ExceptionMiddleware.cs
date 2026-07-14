@@ -40,6 +40,15 @@ namespace KarateClub.Api.Middlewares
                     message = ex.Message
                 });
             }
+            catch (ForbiddenException ex)
+            {
+                context.Response.StatusCode = StatusCodes.Status403Forbidden;
+
+                await context.Response.WriteAsJsonAsync(new
+                {
+                    message = ex.Message
+                });
+            }
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
