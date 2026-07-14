@@ -18,5 +18,6 @@ namespace KarateClub.Application.Interfaces.Repositories
         Task<User?> GetUserByPersonIdAsync(int personId);
         Task UpdateUserAsync(User user);
         Task<bool> ChangeMyUsernameAsync(int userId, string username);
+        Task<bool> ChangeMyPasswordAsync(int userId, string password);
     }
 }

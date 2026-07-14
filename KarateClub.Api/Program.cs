@@ -69,6 +69,8 @@ namespace KarateClub.Api
 
             builder.Services.AddScoped<ChangeMyUsernameHandler>();
 
+            builder.Services.AddScoped<ChangeMyPasswordHandler>();
+
             builder.Services.AddInfrastructure();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

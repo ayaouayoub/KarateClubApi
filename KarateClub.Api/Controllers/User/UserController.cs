@@ -21,16 +21,18 @@ namespace KarateClub.Api.Controllers.User
         private readonly GetUserHandler _getUserHandler;
         private readonly UpdateUserHandler _updateUserHandler;
         private readonly ChangeMyUsernameHandler _changeMyUsernameHandler;
+        private readonly ChangeMyPasswordHandler _changeMyPasswordHandler;
 
         public UserController
             (
-            GetCurrentUserHandler current, 
+            GetCurrentUserHandler current,
             GetUsersHandler users,
             DeactivateUserHandler deactivateUser,
             AddUserHandler addUserHandler,
             GetUserHandler getUserHandler,
             UpdateUserHandler updateUserHandler,
-            ChangeMyUsernameHandler changeMyUsernameHandler)
+            ChangeMyUsernameHandler changeMyUsernameHandler,
+            ChangeMyPasswordHandler changeMyPasswordHandler)
         {
             _current = current;
             _users = users;
@@ -39,6 +41,7 @@ namespace KarateClub.Api.Controllers.User
             _getUserHandler = getUserHandler;
             _updateUserHandler = updateUserHandler;
             _changeMyUsernameHandler = changeMyUsernameHandler;
+            _changeMyPasswordHandler = changeMyPasswordHandler;
         }
 
         [Authorize(Policy = Permissions.Users.View)]
@@ -148,6 +151,18 @@ namespace KarateClub.Api.Controllers.User
         public async Task<IActionResult> ChangenMyUsername(ChangeMyUsernameRequest request)
         {
             await _changeMyUsernameHandler.ExecuteAsync(new UpdateMyUsernameCommand(request.Username));
+            return NoContent();
+        }
+
+        [Authorize]
+        [HttpPatch("me/password")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ChangenMyPassword(ChangeMyPasswordRequest request)
+        {
+            await _changeMyPasswordHandler.ExecuteAsync(new ChangeMyPasswordCommand(request.CurrentPassword, request.NewPassword));
             return NoContent();
         }
     }

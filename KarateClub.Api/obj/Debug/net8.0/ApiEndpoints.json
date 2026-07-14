@@ -485,6 +485,51 @@
   },
   {
     "ContainingType": "KarateClub.Api.Controllers.User.UserController",
+    "Method": "ChangenMyPassword",
+    "RelativePath": "api/users/me/password",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "KarateClub.Api.Controllers.User.Requests.ChangeMyPasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "KarateClub.Api.Controllers.User.UserController",
     "Method": "ChangenMyUsername",
     "RelativePath": "api/users/me/username",
     "HttpMethod": "PATCH",
