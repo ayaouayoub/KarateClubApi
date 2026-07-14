@@ -29,7 +29,9 @@ namespace KarateClub.Infrastructure
 
             services.AddScoped<IDbConnectionFactory, SqlConnectionFactory>();
 
-            services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandler>();
+            services.AddScoped<IAuthorizationHandler, ActiveUserAuthorizationHandler>();
+
+            services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
 
             return services;
         }

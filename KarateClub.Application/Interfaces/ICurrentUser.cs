@@ -17,6 +17,6 @@ namespace KarateClub.Application.Interfaces
 
         bool IsActive { get; }
 
-        IReadOnlyCollection<string> permissions { get; }
+        IReadOnlyCollection<string> Permissions { get; }
     }
 }

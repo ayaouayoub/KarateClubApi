@@ -49,6 +49,15 @@ namespace KarateClub.Api.Middlewares
                     message = ex.Message
                 });
             }
+            catch (UnauthorizedException ex)
+            {
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+
+                await context.Response.WriteAsJsonAsync(new
+                {
+                    message = ex.Message
+                });
+            }
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
@@ -57,7 +66,7 @@ namespace KarateClub.Api.Middlewares
 
                 await context.Response.WriteAsJsonAsync(new
                 {
-                    message = "Internal Server Error: "
+                    message = "Internal Server Error: " + ex.Message
                 });
             }
         }

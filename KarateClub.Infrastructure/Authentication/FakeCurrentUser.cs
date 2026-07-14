@@ -19,7 +19,7 @@ namespace KarateClub.Infrastructure.Authentication
 
         public bool IsActive => true;
 
-        public IReadOnlyCollection<string> permissions => new List<string>()
+        public IReadOnlyCollection<string> Permissions => new List<string>()
         { 
             "Members.View",
             "Members.Create",

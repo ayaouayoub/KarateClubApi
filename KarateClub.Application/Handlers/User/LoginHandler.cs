@@ -30,7 +30,7 @@ namespace KarateClub.Application.Handlers.User
         {
             var user = await _repo.GetByUsernameAsync(command.Username);
 
-            if (user == null || !_encryption.Verify(command.Password, user.PasswordHash)) throw new Exception("Invalid credentials.");
+            if (user == null || !_encryption.Verify(command.Password, user.PasswordHash)) throw new UnauthorizedException("Invalid credentials.");
 
             if (!user.IsActive) throw new ForbiddenException("Your account is inactive.");
 

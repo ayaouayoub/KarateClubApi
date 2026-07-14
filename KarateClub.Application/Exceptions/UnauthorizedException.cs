@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace KarateClub.Application.Exceptions
 {
-    internal class UnauthorizedException
+    public class UnauthorizedException : Exception
     {
+        public UnauthorizedException(string message) : base(message) { }
     }
 }

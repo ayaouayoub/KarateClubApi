@@ -8,6 +8,7 @@ using KarateClub.Application.Security;
 using KarateClub.Api.Middlewares;
 using KarateClub.Infrastructure.Authorization;
 using KarateClub.Application.Handlers.Person;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KarateClub.Api
 {
@@ -97,11 +98,20 @@ namespace KarateClub.Api
 
             builder.Services.AddAuthorization(options =>
             {
+                options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .AddRequirements(new ActiveUserRequirement())
+                    .Build();
+
                 foreach (string permission in Permissions.GetAll())
                 {
                     options.AddPolicy(permission, policy =>
                     {
-                        policy.Requirements.Add(new PermissionRequirement(permission));
+                        policy.RequireAuthenticatedUser();
+
+                        policy.AddRequirements(
+                            new ActiveUserRequirement(),
+                            new PermissionRequirement(permission));
                     });
                 }
             });

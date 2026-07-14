@@ -5,6 +5,7 @@ using KarateClub.Application.Handlers.User.Commands;
 using KarateClub.Application.Handlers.User.Queries;
 using KarateClub.Application.Security;
 using KarateClub.Domain.Entities;
+using KarateClub.Infrastructure.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -105,7 +106,7 @@ namespace KarateClub.Api.Controllers.User
             return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
         }
 
-        [Authorize]
+        [Authorize(Policy = Permissions.Users.View)]
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

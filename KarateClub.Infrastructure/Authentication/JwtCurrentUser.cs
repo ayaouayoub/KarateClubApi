@@ -8,36 +8,25 @@ using Microsoft.AspNetCore.Http;
 
 namespace KarateClub.Infrastructure.Authentication
 {
-    public class JwtCurrentUser : ICurrentUser
+    public sealed class JwtCurrentUser : ICurrentUser
     {
-        private readonly IHttpContextAccessor _context;
+        private readonly IHttpContextAccessor _accessor;
 
-        public JwtCurrentUser(IHttpContextAccessor context)
+        public JwtCurrentUser(IHttpContextAccessor accessor)
         {
-            _context = context;
+            _accessor = accessor;
         }
 
-        private ClaimsPrincipal User => _context.HttpContext?.User ?? new ClaimsPrincipal();
+        private User User => (User)_accessor.HttpContext!.Items["CurrentUser"]!;
 
-        public bool IsAuthenticated => User.Identity?.IsAuthenticated ?? false;
+        public int UserId => User.Id;
 
-        public int UserId
-        {
-            get
-            {
-                if (!IsAuthenticated)
-                    return 0;
+        public string Username => User.Username;
 
-                return int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
-            }
-        }
+        public bool IsSuperAdmin => User.IsSuperAdmin;
 
-        public string Username => User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)!.Value;
+        public bool IsActive => User.IsActive;
 
-        public bool IsSuperAdmin => bool.Parse(User.Claims.FirstOrDefault(c => c.Type == "IsSuperAdmin")!.Value);
-
-        public bool IsActive => bool.Parse(User.Claims.FirstOrDefault(c => c.Type == "IsActive")!.Value);
-
-        public IReadOnlyCollection<string> permissions => User.Claims.Where(c => c.Type == "permission").Select(c => c.Value).ToList();
+        public IReadOnlyCollection<string> Permissions => User.Permissions.Select(p => p.Code).ToList();
     }
 }
