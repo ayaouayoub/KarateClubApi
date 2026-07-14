@@ -186,25 +186,7 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             command.Parameters.AddWithValue("@CreatedAt", user.CreatedAt);
             command.Parameters.AddWithValue("@PersonId", user.PersonId);
 
-            DataTable permissions = new();
-
-            permissions.Columns.Add("PermissionId", typeof(int));
-
-            if (!user.IsSuperAdmin)
-            {
-                foreach (Permission permission in user.Permissions)
-                {
-                    permissions.Rows.Add(permission.Id);
-                }
-            }
-
-            SqlParameter permissionParameter = new("@Permissions", SqlDbType.Structured)
-            {
-                TypeName = "PermissionIdTableType",
-                Value = permissions
-            };
-
-            command.Parameters.Add(permissionParameter);
+            command.Parameters.Add(_CreatePermissionsParameter(user.Permissions));
 
             SqlParameter output = new("@NewUserID", SqlDbType.Int)
             {
@@ -249,6 +231,45 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             }
 
             return user;
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_UpdateUser", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@UserId", user.Id);
+            command.Parameters.AddWithValue("@Username", user.Username);
+            command.Parameters.AddWithValue("@PasswordHash", user.PasswordHash);
+            command.Parameters.AddWithValue("@IsActive", user.IsActive);
+            command.Parameters.AddWithValue("@PersonId", user.PersonId);
+
+            command.Parameters.Add(_CreatePermissionsParameter(user.Permissions));
+
+            await connection.OpenAsync();
+
+            await command.ExecuteNonQueryAsync();
+        }
+
+        private static SqlParameter _CreatePermissionsParameter(IEnumerable<Permission> permissions)
+        {
+            DataTable table = new();
+
+            table.Columns.Add("PermissionId", typeof(int));
+
+            foreach (Permission permission in permissions)
+            {
+                table.Rows.Add(permission.Id);
+            }
+
+            return new SqlParameter("@Permissions", SqlDbType.Structured)
+            {
+                TypeName = "PermissionIdTableType",
+                Value = table
+            };
         }
     }
 }

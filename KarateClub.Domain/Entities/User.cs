@@ -42,9 +42,9 @@ namespace KarateClub.Domain.Entities
 
         public DateTime CreatedAt { get; }
 
-        public int PersonId { get; }
+        public int PersonId { get; private set; }
 
-        public Person? Person { get; }
+        public Person? Person { get; private set; }
 
         public IReadOnlyCollection<Permission> Permissions => _permissions;
 
@@ -103,6 +103,16 @@ namespace KarateClub.Domain.Entities
             Username = username;
         }
 
+        public void ChangePerson(Person person)
+        {
+            if (person is null)
+            {
+                throw new DomainException("User person cannot be null");
+            }
+            Person = person;
+            PersonId = person.Id;
+        }
+
         public void ChangePassword(string passwordHash)
         {
             _ValidatePasswordHash(passwordHash);
@@ -138,6 +148,14 @@ namespace KarateClub.Domain.Entities
                 throw new DomainException("User is already super admin.");
 
             IsSuperAdmin = true;
+        }
+
+        public void DemoteFromSuperAdmin()
+        {
+            if (!IsSuperAdmin)
+                throw new DomainException("User is not a super admin.");
+
+            IsSuperAdmin = false;
         }
         public void SetPermissions(IEnumerable<Permission> permissions)
         {

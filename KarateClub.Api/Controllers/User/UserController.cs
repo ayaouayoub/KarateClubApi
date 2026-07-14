@@ -19,20 +19,23 @@ namespace KarateClub.Api.Controllers.User
         private readonly DeactivateUserHandler _deactivateUser;
         private readonly AddUserHandler _addUserHandler;
         private readonly GetUserHandler _getUserHandler;
+        private readonly UpdateUserHandler _updateUserHandler;
 
         public UserController
             (
             GetCurrentUserHandler current, 
-            GetUsersHandler users, 
-            DeactivateUserHandler deactivateUser, 
+            GetUsersHandler users,
+            DeactivateUserHandler deactivateUser,
             AddUserHandler addUserHandler,
-            GetUserHandler getUserHandler)
+            GetUserHandler getUserHandler,
+            UpdateUserHandler updateUserHandler)
         {
             _current = current;
             _users = users;
             _deactivateUser = deactivateUser;
             _addUserHandler = addUserHandler;
             _getUserHandler = getUserHandler;
+            _updateUserHandler = updateUserHandler;
         }
 
         [Authorize(Policy = Permissions.Users.View)]
@@ -105,6 +108,32 @@ namespace KarateClub.Api.Controllers.User
         public async Task<ActionResult<UserDetialsDto>> GetUserById(int id)
         {
             return Ok(await _getUserHandler.ExecuteAsync(new GetUserByIdQuery(id)));
+        }
+
+
+        [Authorize(Policy = Permissions.Users.Update)]
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<UserDto>> UpdateUser(int id, [FromBody] UpdateUserRequest request)
+        {
+            var command = new UpdateUserCommand
+            {
+                UserId = id,
+                Username = request.Username,
+                Password = request.Password,
+                IsActive = request.IsActive,
+                PersonId = request.PersonId,
+                Permissions = request.Permissions?.Select(p => Permission.Load(p.Id, p.Code)).ToList()
+            };
+
+            UserDto user = await _updateUserHandler.ExecuteAsync(command);
+
+            return Ok(user);
         }
     }
 }
