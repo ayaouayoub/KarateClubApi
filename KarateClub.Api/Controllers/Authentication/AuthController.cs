@@ -4,6 +4,7 @@ using KarateClub.Application.Handlers.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using KarateClub.Api.Controllers.Authentication.Requests;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KarateClub.Api.Controllers.Authentication
 {
@@ -19,6 +20,7 @@ namespace KarateClub.Api.Controllers.Authentication
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
