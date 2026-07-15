@@ -32,7 +32,7 @@ namespace KarateClub.Application.Handlers.Person
                 Id = person.Id,
                 Name = person.Name,
                 Address = person.Address,
-                Email = person.Email.Value
+                Email = person.Email?.Value
             });
             return peopleDtos;
         }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KarateClub.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10cdd92973f2cadae90f2727ff454820d0b759fe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92e8f8db1245510a24202803039b7732c817bb45")]
 [assembly: System.Reflection.AssemblyProductAttribute("KarateClub.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KarateClub.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

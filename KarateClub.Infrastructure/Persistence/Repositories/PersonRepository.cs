@@ -110,9 +110,22 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return person;
         }
 
-        public Task UpdatePersonAsync(Person person)
+        public async Task UpdatePersonAsync(Person person)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_UpdatePerson", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@PersonId", person.Id);
+            command.Parameters.AddWithValue("@Name", person.Name);
+            command.Parameters.AddWithValue("@Address", person.Address);
+            command.Parameters.AddWithValue("@Email", person.Email?.Value);
+
+            await connection.OpenAsync();
+
+            await command.ExecuteNonQueryAsync();
         }
     }
 }

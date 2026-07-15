@@ -14,9 +14,9 @@ namespace KarateClub.Domain.Entities
         public int Id { get; private set; }
         public string Name { get; private set; } = null!;
         public string? Address { get; private set; }
-        public Email Email { get; private set; } = null!;
+        public Email? Email { get; private set; } = null!;
 
-        private Person(int id, string name, string? address, Email email)
+        private Person(int id, string name, string? address, Email? email)
         {
             _ValidateName(name);
             _ValidateAddress(address);
@@ -27,12 +27,12 @@ namespace KarateClub.Domain.Entities
             Email = email;
         }
 
-        public static Person Create(string name, string? address, Email email)
+        public static Person Create(string name, string? address, Email? email)
         {
             return new Person(-1, name, address, email);
         }
 
-        public static Person Load(int id, string name, string? address, Email email)
+        public static Person Load(int id, string name, string? address, Email? email)
         {
             return new Person(id, name, address, email);
         }
@@ -43,13 +43,13 @@ namespace KarateClub.Domain.Entities
             Name = name;
         }
 
-        public void ChangeAddress(string address)
+        public void ChangeAddress(string? address)
         {
             _ValidateAddress(address);
             Address = address;
         }
 
-        public void ChangeEmail(Email email)
+        public void ChangeEmail(Email? email)
         {
             Email = email;
         }

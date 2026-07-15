@@ -1,10 +1,14 @@
 ﻿using KarateClub.Api.Controllers.Person.Requests;
+using KarateClub.Api.Controllers.User.Requests;
 using KarateClub.Application.DTOs;
 using KarateClub.Application.Handlers.Person;
 using KarateClub.Application.Handlers.Person.Commnds;
 using KarateClub.Application.Handlers.Person.Queries;
 using KarateClub.Application.Handlers.User;
+using KarateClub.Application.Handlers.User.Commands;
 using KarateClub.Application.Handlers.User.Queries;
+using KarateClub.Application.Security;
+using KarateClub.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,17 +22,20 @@ namespace KarateClub.Api.Controllers.Person
         private readonly GetUserByPersonIdHandler _getUserByPersonIdHandler;
         private readonly GetPeopleHandler _getPeopleHandler;
         private readonly AddNewPersonHandler _addNewPersonHandler;
+        private readonly UpdatePersonHandler _updatePersonHandler;
 
         public PersonController(
             GetPesronHandler getPesront,
             GetUserByPersonIdHandler getUserByPersonIdHandler,
             GetPeopleHandler getPeopleHandler,
-            AddNewPersonHandler addNewPersonHandler)
+            AddNewPersonHandler addNewPersonHandler,
+            UpdatePersonHandler updatePersonHandler)
         {
             _getPesront = getPesront;
             _getUserByPersonIdHandler = getUserByPersonIdHandler;
             _getPeopleHandler = getPeopleHandler;
             _addNewPersonHandler = addNewPersonHandler;
+            _updatePersonHandler = updatePersonHandler;
         }
 
         [Authorize]
@@ -82,5 +89,28 @@ namespace KarateClub.Api.Controllers.Person
 
             return CreatedAtAction(nameof(GetPersonById), new { id = person.Id }, person);
         }
+
+        [Authorize]
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(typeof(PersonDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<PersonDto>> UpdatePerson(int id, [FromBody] UpdatePersonRequest request)
+        {
+            var command = new UpdatePersonCommand
+            {
+                PersonId = id,
+                Name = request.Name,
+                Address = request.Address,
+                Email = request.Email
+            };
+
+            PersonDto person = await _updatePersonHandler.ExecuteAsync(command);
+
+            return Ok(person);
+        }
+
     }
 }

@@ -33,7 +33,7 @@ namespace KarateClub.Application.Handlers.Person
                 Id = person.Id,
                 Address = person.Address,
                 Name = person.Name,
-                Email = person.Email.Value
+                Email = person.Email?.Value
             };
         }
     }
