@@ -4,12 +4,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Domain.Entities;
 using KarateClub.Domain.ValueObjs;
 using KarateClub.Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.Data.SqlClient;
+using static KarateClub.Application.Security.Permissions;
 
 namespace KarateClub.Infrastructure.Persistence.Repositories
 {
@@ -22,9 +24,31 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             _connectionFactory = connectionFactory;
         }
 
-        public Task<bool> AddPersonAsync(Person person)
+        public async Task<int> AddPersonAsync(Person person)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_AddNewPerson", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@PersonId", person.Id);
+            command.Parameters.AddWithValue("@Name", person.Name);
+            command.Parameters.AddWithValue("@Address", person.Address);
+            command.Parameters.AddWithValue("@Email", person.Email.Value);
+
+            SqlParameter output = new("@NewPersonId", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            command.Parameters.Add(output);
+
+            await connection.OpenAsync();
+
+            await command.ExecuteNonQueryAsync();
+
+            return (int)output.Value;
         }
 
         public async Task<List<Person>> GetPeopleAsync()
