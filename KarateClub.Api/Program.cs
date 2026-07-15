@@ -9,6 +9,7 @@ using KarateClub.Api.Middlewares;
 using KarateClub.Infrastructure.Authorization;
 using KarateClub.Application.Handlers.Person;
 using Microsoft.AspNetCore.Authorization;
+using Serilog;
 
 namespace KarateClub.Api
 {
@@ -121,6 +122,10 @@ namespace KarateClub.Api
                     });
                 }
             });
+
+            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(builder.Configuration).CreateLogger();
+
+            builder.Host.UseSerilog();
 
             var app = builder.Build();
 

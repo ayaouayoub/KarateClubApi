@@ -60,13 +60,19 @@ namespace KarateClub.Api.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
+                _logger.LogError
+                (
+                    ex,
+                    "Unhandled exception while processing {Method} {Path}",
+                    context.Request.Method,
+                    context.Request.Path
+                );
 
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
 
                 await context.Response.WriteAsJsonAsync(new
                 {
-                    message = "Internal Server Error: " + ex.Message 
+                    message = "Internal Server Error"
                 });
             }
         }

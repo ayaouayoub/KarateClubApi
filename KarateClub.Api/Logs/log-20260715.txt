@@ -1,0 +1,42 @@
+2026-07-15 16:18:44.206 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-15 16:18:47.336 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-15 16:18:48.065 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-15 16:18:48.407 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-15 16:18:49.276 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-15 16:18:50.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 1956.3391ms
+2026-07-15 16:18:50.342 +02:00 [INF] Hosting environment: Development
+2026-07-15 16:18:50.521 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-15 16:18:50.522 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-15 16:18:50.544 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-15 16:18:50.609 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 88.0356ms
+2026-07-15 16:18:50.894 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 371.7909ms
+2026-07-15 16:18:53.119 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-15 16:18:53.525 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 405.9841ms
+2026-07-15 16:19:17.797 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7192/api/auth/login - application/json 52
+2026-07-15 16:19:18.130 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api)'
+2026-07-15 16:19:18.230 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[KarateClub.Application.DTOs.LoginResponseDto]] Login(KarateClub.Api.Controllers.Authentication.Requests.LoginRequest) on controller KarateClub.Api.Controllers.Authentication.AuthController (KarateClub.Api).
+2026-07-15 16:19:20.625 +02:00 [INF] Executing OkObjectResult, writing value of type 'KarateClub.Application.DTOs.LoginResponseDto'.
+2026-07-15 16:19:20.681 +02:00 [INF] Executed action KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api) in 2427.7422ms
+2026-07-15 16:19:20.688 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api)'
+2026-07-15 16:19:20.695 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7192/api/auth/login - 200 null application/json; charset=utf-8 2897.7756ms
+2026-07-15 16:19:46.686 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/api/users/1 - null null
+2026-07-15 16:19:47.154 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.User.UserController.GetUserById (KarateClub.Api)'
+2026-07-15 16:19:47.179 +02:00 [INF] Route matched with {action = "GetUserById", controller = "User"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[KarateClub.Application.DTOs.UserDetialsDto]] GetUserById(Int32) on controller KarateClub.Api.Controllers.User.UserController (KarateClub.Api).
+2026-07-15 16:19:47.204 +02:00 [INF] Executed action KarateClub.Api.Controllers.User.UserController.GetUserById (KarateClub.Api) in 10.1036ms
+2026-07-15 16:19:47.217 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.User.UserController.GetUserById (KarateClub.Api)'
+2026-07-15 16:19:47.555 +02:00 [ERR] Unhandled exception while processing GET /api/users/1
+System.InvalidOperationException: Unable to resolve service for type 'KarateClub.Application.Handlers.User.GetUserHandler' while attempting to activate 'KarateClub.Api.Controllers.User.UserController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method19(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at KarateClub.Api.Middlewares.ExceptionMiddleware.Invoke(HttpContext context) in C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api\Middlewares\ExceptionMiddleware.cs:line 23
+2026-07-15 16:19:47.685 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/api/users/1 - 500 null application/json; charset=utf-8 998.8059ms
