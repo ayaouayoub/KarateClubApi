@@ -56,7 +56,7 @@ namespace KarateClub.Api.Controllers.Person
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<List<PersonDto>>> GetUserByPersonId()
+        public async Task<ActionResult<List<PersonDto>>> GetPeople()
         {
             return Ok(await _getPeopleHandler.ExecuteAsync(new GetPeopleQuery()));
         }
