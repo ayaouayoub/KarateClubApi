@@ -57,7 +57,7 @@ namespace KarateClub.Application.Handlers.User
 
         private async Task<Domain.Entities.Person> _GetPerson(int id)
         {
-            var person = await _personRepository.GetPersonById(id);
+            var person = await _personRepository.GetPersonByIdAsync(id);
             if (person is null) throw new Exceptions.NotFoundException("Person not found");
             return person;
         }

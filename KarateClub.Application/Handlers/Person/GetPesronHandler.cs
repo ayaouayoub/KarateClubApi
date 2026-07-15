@@ -21,7 +21,7 @@ namespace KarateClub.Application.Handlers.Person
 
         public async Task<PersonDto> ExecuteAsync(GetPesonbByIdQuery query)
         {
-            var person = await _repo.GetPersonById(query.PersonId);
+            var person = await _repo.GetPersonByIdAsync(query.PersonId);
 
             if (person is null)
             {

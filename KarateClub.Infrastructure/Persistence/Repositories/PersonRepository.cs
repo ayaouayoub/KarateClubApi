@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Domain.Entities;
+using KarateClub.Domain.ValueObjs;
 using KarateClub.Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.Data.SqlClient;
@@ -21,7 +22,43 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             _connectionFactory = connectionFactory;
         }
 
-        public async Task<Person?> GetPersonById(int id)
+        public Task<bool> AddPersonAsync(Person person)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<List<Person>> GetPeopleAsync()
+        {
+            List<Person> people = new();
+
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_GetPeople", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            await connection.OpenAsync();
+
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                people.Add
+                (
+                    Person.Load
+                    (
+                        id: (int)reader["PersonID"],
+                        name: (string)reader["Name"],
+                        address: (string)reader["Address"],
+                        email: new Email((string)reader["Email"])
+                    )
+                );
+            }
+
+            return people;
+        }
+
+        public async Task<Person?> GetPersonByIdAsync(int id)
         {
             Person? person = null;
 
@@ -47,6 +84,11 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             }
 
             return person;
+        }
+
+        public Task UpdatePersonAsync(Person person)
+        {
+            throw new NotImplementedException();
         }
     }
 }

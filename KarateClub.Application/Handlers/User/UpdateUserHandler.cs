@@ -29,7 +29,7 @@ namespace KarateClub.Application.Handlers.User
 
             Domain.Entities.User user = await _userRepository.GetByIdAsync(command.UserId) ?? throw new NotFoundException("User not found.");
 
-            Domain.Entities.Person person = await _personRepository.GetPersonById(command.PersonId) ?? throw new NotFoundException("Person not found.");
+            Domain.Entities.Person person = await _personRepository.GetPersonByIdAsync(command.PersonId) ?? throw new NotFoundException("Person not found.");
 
             if (user.PersonId != command.PersonId && await _userRepository.GetUserByPersonIdAsync(command.PersonId) is not null) throw new DomainException("this persone is associated with another user");
 

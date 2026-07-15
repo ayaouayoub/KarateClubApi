@@ -17,11 +17,16 @@ namespace KarateClub.Api.Controllers.Person
     {
         private readonly GetPesronHandler _getPesront;
         private readonly GetUserByPersonIdHandler _getUserByPersonIdHandler;
+        private readonly GetPeopleHandler _getPeopleHandler;
 
-        public PersonController(GetPesronHandler getPesront, GetUserByPersonIdHandler getUserByPersonIdHandler)
+        public PersonController(
+            GetPesronHandler getPesront, 
+            GetUserByPersonIdHandler getUserByPersonIdHandler,
+            GetPeopleHandler getPeopleHandler)
         {
             _getPesront = getPesront;
             _getUserByPersonIdHandler = getUserByPersonIdHandler;
+            _getPeopleHandler = getPeopleHandler;
         }
 
         [Authorize]
@@ -44,6 +49,16 @@ namespace KarateClub.Api.Controllers.Person
         public async Task<ActionResult<UserWithoutPermissionsDto>> GetUserByPersonId(int personId)
         {
             return Ok(await _getUserByPersonIdHandler.ExecuteAsync(new GetUserByPersonIdQuery(personId)));
+        }
+
+        [Authorize]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<List<PersonDto>>> GetUserByPersonId()
+        {
+            return Ok(await _getPeopleHandler.ExecuteAsync(new GetPeopleQuery()));
         }
     }
 }

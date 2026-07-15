@@ -9,6 +9,9 @@ namespace KarateClub.Application.Interfaces.Repositories
 {
     public interface IPersonRepository
     {
-        Task<Person?> GetPersonById(int id);
+        Task<Person?> GetPersonByIdAsync(int id);
+        Task<List<Person>> GetPeopleAsync();
+        Task<bool> AddPersonAsync(Person person);
+        Task UpdatePersonAsync(Person person);
     }
 }
