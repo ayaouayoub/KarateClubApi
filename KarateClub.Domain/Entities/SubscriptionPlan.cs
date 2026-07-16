@@ -15,7 +15,7 @@ namespace KarateClub.Domain.Entities
         public decimal Fees { get; }
         public bool IsActive { get; private set; }
 
-        public SubscriptionPlan(int id, string name, int durationInMonths, decimal fees, bool isActive)
+        public SubscriptionPlan(int id, string name, int durationInMonths, decimal fees, bool isActive = true)
         {
             _ValidateName(name);
             _ValidateFees(fees);
@@ -28,9 +28,9 @@ namespace KarateClub.Domain.Entities
             IsActive = isActive;
         }
 
-        public static SubscriptionPlan Create(string name, int durationInMonths, decimal fees, bool isActive)
+        public static SubscriptionPlan Create(string name, int durationInMonths, decimal fees)
         {
-            return new SubscriptionPlan(0, name, durationInMonths, fees, isActive);
+            return new SubscriptionPlan(0, name, durationInMonths, fees);
         }
 
         public static SubscriptionPlan Load(int id, string name, int durationInMonths, decimal fees, bool isActive)
@@ -56,12 +56,12 @@ namespace KarateClub.Domain.Entities
 
         private void _ValidateName(string name)
         {
-            if (string.IsNullOrEmpty(name)) throw new DomainException("Belt rank name cannot be null or empty");
+            if (string.IsNullOrEmpty(name)) throw new DomainException("Subscription plan name cannot be null or empty");
         }
 
         private void _ValidateFees(decimal fees)
         {
-            if (fees < 0) throw new DomainException("Belt test fees cannot be nigative");
+            if (fees < 0) throw new DomainException("Subscription plan fees cannot be nigative");
         }
 
         private void _ValidateDurationInMonths(int DurationInMonths)

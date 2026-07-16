@@ -32,7 +32,6 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
 
             command.CommandType = CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@PersonId", person.Id);
             command.Parameters.AddWithValue("@Name", person.Name);
             command.Parameters.AddWithValue("@Address", person.Address);
             command.Parameters.AddWithValue("@Email", person.Email?.Value);

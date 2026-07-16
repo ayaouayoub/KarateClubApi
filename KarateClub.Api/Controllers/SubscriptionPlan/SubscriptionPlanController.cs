@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using KarateClub.Application.Handlers.SubscriptionPlan.Queries;
+using KarateClub.Api.Controllers.Person.Requests;
+using KarateClub.Application.Handlers.Person.Commnds;
+using KarateClub.Application.Handlers.Person;
+using KarateClub.Api.Controllers.SubscriptionPlan.Requests;
+using KarateClub.Application.Handlers.SubscriptionPlan.Commands;
 
 namespace KarateClub.Api.Controllers.SubscriptionPlan
 {
@@ -16,11 +21,13 @@ namespace KarateClub.Api.Controllers.SubscriptionPlan
     {
         private readonly GetSubscriptionPlanHandler _getSubscriptionPlanHandler;
         private readonly GetSubscriptionPlansHandler _getSubscriptionPlansHandler;
+        private readonly CreateSubscriptionPlanHandler _createSubscriptionPlanHandler;
 
-        public SubscriptionPlanController(GetSubscriptionPlanHandler getSubscriptionPlanHandler, GetSubscriptionPlansHandler getSubscriptionPlansHandler)
+        public SubscriptionPlanController(GetSubscriptionPlanHandler getSubscriptionPlanHandler, GetSubscriptionPlansHandler getSubscriptionPlansHandler, CreateSubscriptionPlanHandler createSubscriptionPlanHandler)
         {
             _getSubscriptionPlanHandler = getSubscriptionPlanHandler;
             _getSubscriptionPlansHandler = getSubscriptionPlansHandler;
+            _createSubscriptionPlanHandler = createSubscriptionPlanHandler;
         }
 
         [Authorize]
@@ -43,6 +50,26 @@ namespace KarateClub.Api.Controllers.SubscriptionPlan
         public async Task<ActionResult<IEnumerable<SubscriptionPlanDto>>> GetSubscriptionPlans()
         {
             return Ok(await _getSubscriptionPlansHandler.ExecuteAsync(new GetSubscriptionPlansQuery()));
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ProducesResponseType(typeof(SubscriptionPlanDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<SubscriptionPlanDto>> AddNewSubscriptionPlan(CreateSubscriptionPlanRequest request)
+        {
+            var command = new CreateSubscriptionPlanCommand
+            {
+                Name = request.Name,
+                DurationInMonths = request.DurationInMonths,
+                Fees = request.Fees
+            };
+
+            SubscriptionPlanDto plan = await _createSubscriptionPlanHandler.ExecuteAsync(command);
+
+            return CreatedAtAction(nameof(GetSubscriptionPlanById), new { id = plan.Id }, plan);
         }
     }
 }

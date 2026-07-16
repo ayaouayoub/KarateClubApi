@@ -21,9 +21,31 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             _connectionFactory = connectionFactory;
         }
 
-        public Task<int> AddSubscriptionPlanAsync(SubscriptionPlan subscriptionPlan)
+        public async Task<int> AddSubscriptionPlanAsync(SubscriptionPlan subscriptionPlan)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_AddNewSubscriptionPlan", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@PlanName", subscriptionPlan.Name);
+            command.Parameters.AddWithValue("@DurationInMonths", subscriptionPlan.DurationInMonths);
+            command.Parameters.AddWithValue("@Fees", subscriptionPlan.Fees);
+            command.Parameters.AddWithValue("@IsActive", subscriptionPlan.IsActive); 
+
+            SqlParameter output = new("@NewPlanID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            command.Parameters.Add(output);
+
+            await connection.OpenAsync();
+
+            await command.ExecuteNonQueryAsync();
+
+            return (int)output.Value;
         }
 
         public Task<bool> DeactivatePlanAsync(int id)
