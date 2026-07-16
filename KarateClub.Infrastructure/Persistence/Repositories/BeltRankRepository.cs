@@ -10,6 +10,7 @@ using KarateClub.Domain.ValueObjs;
 using KarateClub.Infrastructure.Persistence.Data;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.Data.SqlClient;
+using static KarateClub.Application.Security.Permissions;
 
 namespace KarateClub.Infrastructure.Persistence.Repositories
 {
@@ -22,9 +23,21 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             _connectionFactory = connectionFactory;
         }
 
-        public Task<bool> ChangeBeltTestFeesAsync(decimal NewTestFees)
+        public async Task<bool> ChangeBeltTestFeesAsync(int beltId, decimal newTestFees)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_UpdateBeltTestFees", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@BeltId", beltId);
+            command.Parameters.AddWithValue("@TestFees", newTestFees);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
         }
 
         public async Task<List<BeltRank>> GetBeltsAsync()

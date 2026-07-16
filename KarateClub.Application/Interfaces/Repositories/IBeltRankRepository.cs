@@ -11,6 +11,6 @@ namespace KarateClub.Application.Interfaces.Repositories
     {
         Task<BeltRank?> GetByIdAsync(int id);
         Task<List<BeltRank>> GetBeltsAsync();
-        Task<bool> ChangeBeltTestFeesAsync(decimal NewTestFees);
+        Task<bool> ChangeBeltTestFeesAsync(int beltId, decimal newTestFees);
     }
 }

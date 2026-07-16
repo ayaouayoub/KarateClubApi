@@ -35,7 +35,7 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             command.Parameters.AddWithValue("@PersonId", person.Id);
             command.Parameters.AddWithValue("@Name", person.Name);
             command.Parameters.AddWithValue("@Address", person.Address);
-            command.Parameters.AddWithValue("@Email", person.Email.Value);
+            command.Parameters.AddWithValue("@Email", person.Email?.Value);
 
             SqlParameter output = new("@NewPersonId", SqlDbType.Int)
             {

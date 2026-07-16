@@ -84,6 +84,8 @@ namespace KarateClub.Api
 
             builder.Services.AddScoped<GetBeltsHandler>();
 
+            builder.Services.AddScoped<ChangeBeltTestFeesHandler>();
+
             builder.Services.AddInfrastructure();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
