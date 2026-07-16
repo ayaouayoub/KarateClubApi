@@ -8,14 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KarateClub.Api.Controllers.BeltRank
 {
-    [Route("api/beltrank")]
+    [Route("api/beltranks")]
     [ApiController]
     public class BeltRankController : ControllerBase
     {
         private readonly GetBeltRankHandler _getBeltRankHandler;
-        public BeltRankController(GetBeltRankHandler getBeltRankHandler)
+        private readonly GetBeltsHandler _getBeltsHandler;
+
+        public BeltRankController(GetBeltRankHandler getBeltRankHandler, GetBeltsHandler getBeltsHandler)
         {
             _getBeltRankHandler = getBeltRankHandler;
+            _getBeltsHandler = getBeltsHandler;
         }
 
         [Authorize(Policy = Permissions.BeltRanks.View)]
@@ -27,6 +30,18 @@ namespace KarateClub.Api.Controllers.BeltRank
         public async Task<ActionResult<BeltRankDto>> GetBeltRankById(int id)
         {
             return Ok(await _getBeltRankHandler.ExecuteAsync(new GetBeltRankQuery(id)));
+        }
+
+        [Authorize(Policy = Permissions.BeltRanks.View)]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<BeltRankDto>>> GetBelts()
+        {
+            return Ok(await _getBeltsHandler.ExecuteAsync(new GetBeltsQuery()));
         }
     }
 }
