@@ -48,9 +48,21 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return (int)output.Value;
         }
 
-        public Task<bool> DeactivatePlanAsync(int id)
+        public async Task<bool> DeactivatePlanAsync(int id)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_DeactivatePlan", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@PlanId", id);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
         }
 
         public async Task<SubscriptionPlan?> GetByIdAsync(int id)
@@ -73,11 +85,6 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             }
 
             return plan;
-        }
-
-        public Task<bool> GetPlanByUserIdAsync(int userId)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<SubscriptionPlan>> GetSubscriptionPlansAsync()

@@ -1,15 +1,8 @@
 ﻿using KarateClub.Application.DTOs;
-using KarateClub.Application.Handlers.BeltRank.Queries;
-using KarateClub.Application.Handlers.BeltRank;
 using KarateClub.Application.Handlers.SubscriptionPlan;
-using KarateClub.Application.Security;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using KarateClub.Application.Handlers.SubscriptionPlan.Queries;
-using KarateClub.Api.Controllers.Person.Requests;
-using KarateClub.Application.Handlers.Person.Commnds;
-using KarateClub.Application.Handlers.Person;
 using KarateClub.Api.Controllers.SubscriptionPlan.Requests;
 using KarateClub.Application.Handlers.SubscriptionPlan.Commands;
 
@@ -22,12 +15,14 @@ namespace KarateClub.Api.Controllers.SubscriptionPlan
         private readonly GetSubscriptionPlanHandler _getSubscriptionPlanHandler;
         private readonly GetSubscriptionPlansHandler _getSubscriptionPlansHandler;
         private readonly CreateSubscriptionPlanHandler _createSubscriptionPlanHandler;
+        private readonly DeactivatePlanHandler _deactivatePlanHandler;
 
-        public SubscriptionPlanController(GetSubscriptionPlanHandler getSubscriptionPlanHandler, GetSubscriptionPlansHandler getSubscriptionPlansHandler, CreateSubscriptionPlanHandler createSubscriptionPlanHandler)
+        public SubscriptionPlanController(GetSubscriptionPlanHandler getSubscriptionPlanHandler, GetSubscriptionPlansHandler getSubscriptionPlansHandler, CreateSubscriptionPlanHandler createSubscriptionPlanHandler, DeactivatePlanHandler deactivatePlanHandler)
         {
             _getSubscriptionPlanHandler = getSubscriptionPlanHandler;
             _getSubscriptionPlansHandler = getSubscriptionPlansHandler;
             _createSubscriptionPlanHandler = createSubscriptionPlanHandler;
+            _deactivatePlanHandler = deactivatePlanHandler;
         }
 
         [Authorize]
@@ -70,6 +65,19 @@ namespace KarateClub.Api.Controllers.SubscriptionPlan
             SubscriptionPlanDto plan = await _createSubscriptionPlanHandler.ExecuteAsync(command);
 
             return CreatedAtAction(nameof(GetSubscriptionPlanById), new { id = plan.Id }, plan);
+        }
+
+        [Authorize]
+        [HttpPatch("{id:int}/deactivate")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeactivatePlan(int id)
+        {
+            await _deactivatePlanHandler.ExecuteAsync(new DeactivatePlanCommand(id));
+            return NoContent();
         }
     }
 }

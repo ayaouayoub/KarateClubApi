@@ -392,3 +392,42 @@ KarateClub.Infrastructure.Authorization.ActiveUserRequirement
 2026-07-16 17:51:23.779 +02:00 [INF] Executed action KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController.AddNewSubscriptionPlan (KarateClub.Api) in 226.7145ms
 2026-07-16 17:51:23.787 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController.AddNewSubscriptionPlan (KarateClub.Api)'
 2026-07-16 17:51:23.794 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7192/api/subscription-plans - 201 null application/json; charset=utf-8 386.4973ms
+2026-07-16 18:11:39.122 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-16 18:11:40.172 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-16 18:11:40.212 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-16 18:11:41.734 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-16 18:11:41.827 +02:00 [INF] Hosting environment: Development
+2026-07-16 18:11:41.831 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-16 18:11:41.841 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-16 18:11:43.496 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 1686.1769ms
+2026-07-16 18:11:43.590 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-16 18:11:43.590 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-16 18:11:43.721 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 131.2917ms
+2026-07-16 18:11:43.948 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 359.2048ms
+2026-07-16 18:11:44.237 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-16 18:11:45.023 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 786.4826ms
+2026-07-16 18:12:11.375 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7192/api/auth/login - application/json 52
+2026-07-16 18:12:11.799 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api)'
+2026-07-16 18:12:11.901 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[KarateClub.Application.DTOs.LoginResponseDto]] Login(KarateClub.Api.Controllers.Authentication.Requests.LoginRequest) on controller KarateClub.Api.Controllers.Authentication.AuthController (KarateClub.Api).
+2026-07-16 18:12:13.778 +02:00 [INF] Executing OkObjectResult, writing value of type 'KarateClub.Application.DTOs.LoginResponseDto'.
+2026-07-16 18:12:13.820 +02:00 [INF] Executed action KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api) in 1894.9712ms
+2026-07-16 18:12:13.826 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api)'
+2026-07-16 18:12:13.833 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7192/api/auth/login - 200 null application/json; charset=utf-8 2457.983ms
+2026-07-16 18:12:38.232 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/subscription-plans/1/deactivate - null null
+2026-07-16 18:12:38.487 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController.DeactivatePlan (KarateClub.Api)'
+2026-07-16 18:12:38.508 +02:00 [INF] Route matched with {action = "DeactivatePlan", controller = "SubscriptionPlan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeactivatePlan(Int32) on controller KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController (KarateClub.Api).
+2026-07-16 18:12:38.654 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-07-16 18:12:38.657 +02:00 [INF] Executed action KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController.DeactivatePlan (KarateClub.Api) in 139.4546ms
+2026-07-16 18:12:38.666 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController.DeactivatePlan (KarateClub.Api)'
+2026-07-16 18:12:38.672 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/subscription-plans/1/deactivate - 204 null null 444.9742ms
+2026-07-16 18:13:38.996 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/subscription-plans/1/deactivate - null null
+2026-07-16 18:13:39.043 +02:00 [INF] Authorization failed. These requirements were not met:
+KarateClub.Infrastructure.Authorization.ActiveUserRequirement
+2026-07-16 18:13:39.052 +02:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-07-16 18:13:39.057 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/subscription-plans/1/deactivate - 403 0 null 60.9817ms
+2026-07-16 18:14:25.793 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/subscription-plans/1/deactivate - null null
+2026-07-16 18:14:25.861 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController.DeactivatePlan (KarateClub.Api)'
+2026-07-16 18:14:25.869 +02:00 [INF] Route matched with {action = "DeactivatePlan", controller = "SubscriptionPlan"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeactivatePlan(Int32) on controller KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController (KarateClub.Api).
+2026-07-16 18:14:26.359 +02:00 [INF] Executed action KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController.DeactivatePlan (KarateClub.Api) in 484.749ms
+2026-07-16 18:14:26.366 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController.DeactivatePlan (KarateClub.Api)'
+2026-07-16 18:14:26.532 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/subscription-plans/1/deactivate - 400 null application/json; charset=utf-8 754.3741ms

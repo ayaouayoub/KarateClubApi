@@ -13,6 +13,5 @@ namespace KarateClub.Application.Interfaces.Repositories
         Task<IEnumerable<SubscriptionPlan>> GetSubscriptionPlansAsync();
         Task<int> AddSubscriptionPlanAsync(SubscriptionPlan subscriptionPlan);
         Task<bool> DeactivatePlanAsync(int id);
-        Task<bool> GetPlanByUserIdAsync(int userId);
     }
 }

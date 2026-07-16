@@ -93,6 +93,8 @@ namespace KarateClub.Api
 
             builder.Services.AddScoped<CreateSubscriptionPlanHandler>();
 
+            builder.Services.AddScoped<DeactivatePlanHandler>();
+
             builder.Services.AddInfrastructure();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
