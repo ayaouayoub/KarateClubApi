@@ -58,9 +58,36 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<List<SubscriptionPlan>> GetSubscriptionPlansAsync()
+        public async Task<IEnumerable<SubscriptionPlan>> GetSubscriptionPlansAsync()
         {
-            throw new NotImplementedException();
+            List<SubscriptionPlan> plans = new();
+
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_GetSubscriptionPlans", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            await connection.OpenAsync();
+
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                plans.Add
+                (
+                    SubscriptionPlan.Load
+                    (
+                        id: (int)reader["PlanID"],
+                        name: (string)reader["PlanName"],
+                        durationInMonths: (int)reader["DurationInMonths"],
+                        fees: (decimal)reader["Fees"],
+                        isActive: (bool)reader["IsActive"]
+                    )
+                );
+            }
+
+            return plans;
         }
     }
 }

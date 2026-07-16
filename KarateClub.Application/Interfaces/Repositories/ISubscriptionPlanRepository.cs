@@ -10,7 +10,7 @@ namespace KarateClub.Application.Interfaces.Repositories
     public interface ISubscriptionPlanRepository
     {
         Task<SubscriptionPlan?> GetByIdAsync(int id);
-        Task<List<SubscriptionPlan>> GetSubscriptionPlansAsync();
+        Task<IEnumerable<SubscriptionPlan>> GetSubscriptionPlansAsync();
         Task<int> AddSubscriptionPlanAsync(SubscriptionPlan subscriptionPlan);
         Task<bool> DeactivatePlanAsync(int id);
         Task<bool> GetPlanByUserIdAsync(int userId);

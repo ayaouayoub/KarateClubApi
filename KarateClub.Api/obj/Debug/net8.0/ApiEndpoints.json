@@ -436,8 +436,51 @@
   },
   {
     "ContainingType": "KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController",
+    "Method": "GetSubscriptionPlans",
+    "RelativePath": "api/subscription-plans",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[KarateClub.Application.DTOs.SubscriptionPlanDto, KarateClub.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "KarateClub.Api.Controllers.SubscriptionPlan.SubscriptionPlanController",
     "Method": "GetSubscriptionPlanById",
-    "RelativePath": "api/subscription-plan/{id}",
+    "RelativePath": "api/subscription-plans/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
