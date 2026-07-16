@@ -33,6 +33,8 @@ namespace KarateClub.Infrastructure
 
             services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
 
+            services.AddScoped<IBeltRankRepository, BeltRankRepository>();
+
             return services;
         }
     }

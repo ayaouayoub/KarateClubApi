@@ -10,6 +10,7 @@ using KarateClub.Infrastructure.Authorization;
 using KarateClub.Application.Handlers.Person;
 using Microsoft.AspNetCore.Authorization;
 using Serilog;
+using KarateClub.Application.Handlers.BeltRank;
 
 namespace KarateClub.Api
 {
@@ -78,6 +79,8 @@ namespace KarateClub.Api
             builder.Services.AddScoped<AddNewPersonHandler>();
 
             builder.Services.AddScoped<UpdatePersonHandler>();
+
+            builder.Services.AddScoped<GetBeltRankHandler>();
 
             builder.Services.AddInfrastructure();
 
