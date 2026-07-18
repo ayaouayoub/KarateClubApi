@@ -20,12 +20,14 @@ namespace KarateClub.Api.Controllers.Instructor
         private readonly GetInstructorHandler _getInstructorHandler;
         private readonly GetInstructorsHandler _getInstructorsHandler;
         private readonly DeactivateInstructorHandler _deactivateInstructorHandler;
+        private readonly ActivateInstructorHandler _activateInstructorHandler;
 
-        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler)
+        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler, ActivateInstructorHandler activateInstructorHandler)
         {
             _getInstructorHandler = getInstructorHandler;
             _getInstructorsHandler = getInstructorsHandler;
             _deactivateInstructorHandler = deactivateInstructorHandler;
+            _activateInstructorHandler = activateInstructorHandler;
         }
 
         [Authorize(Policy = Permissions.Instructors.View)]
@@ -60,6 +62,19 @@ namespace KarateClub.Api.Controllers.Instructor
         public async Task<IActionResult> DeactivateInstructor(int id)
         {
             await _deactivateInstructorHandler.ExecuteAsync(new DeactivateInstructorCommand(id));
+            return NoContent();
+        }
+
+        [Authorize(Policy = Permissions.Instructors.Update)]
+        [HttpPatch("{id:int}/activate")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> ActivateInstructor(int id)
+        {
+            await _activateInstructorHandler.ExecuteAsync(new ActivateInstructorCommand(id));
             return NoContent();
         }
     }
