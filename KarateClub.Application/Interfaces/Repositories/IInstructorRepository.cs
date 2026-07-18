@@ -10,10 +10,10 @@ namespace KarateClub.Application.Interfaces.Repositories
     public interface IInstructorRepository
     {
         Task<Instructor?> GetByIdAsync(int id);
-        Task<Instructor?> GetByPersonIdAsync(int id);
+        Task<Instructor?> GetByPersonIdAsync(int personId);
         Task<int> AddInstructorAsync(Instructor instructor);
         Task<List<Instructor>> GetInstructorsAsync();
         Task<bool> DeactivateInstructorAsync(int id);
-        Task UpdateCurrentBletRankAsync(Instructor instructor);
+        Task UpdateCurrentBletRankAsync(int instructorId, int beltRankId);
     }
 }

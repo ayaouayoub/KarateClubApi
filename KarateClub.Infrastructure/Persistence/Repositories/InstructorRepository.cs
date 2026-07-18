@@ -78,9 +78,34 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
         }
 
 
-        public Task<Instructor?> GetByPersonIdAsync(int id)
+        public async Task<Instructor?> GetByPersonIdAsync(int personId)
         {
-            throw new NotImplementedException();
+            Instructor? instructor = null;
+
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+            using SqlCommand command = new("usp_GetInstructorByPersonID", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@PersonId", personId);
+
+            await connection.OpenAsync();
+
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            if (await reader.ReadAsync())
+            {
+                instructor = Instructor.Load
+                (
+                    id: (int)reader["InstructorID"],
+                    personId: (int)reader["PersonID"],
+                    qualification: (string)reader["Qualification"],
+                    isActive: (bool)reader["IsActive"],
+                    CurrentBeltRankID: (int)reader["CurrentBeltRankID"],
+                    hireDate: (DateTime)reader["HireDate"]
+                );
+            }
+
+            return instructor;
         }
 
         public Task<List<Instructor>> GetInstructorsAsync()
@@ -88,7 +113,7 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task UpdateCurrentBletRankAsync(Instructor instructor)
+        public Task UpdateCurrentBletRankAsync(int instructorId, int beltRankId)
         {
             throw new NotImplementedException();
         }

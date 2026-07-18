@@ -1,6 +1,8 @@
 ﻿using KarateClub.Api.Controllers.Person.Requests;
 using KarateClub.Api.Controllers.User.Requests;
 using KarateClub.Application.DTOs;
+using KarateClub.Application.Handlers.Instructor;
+using KarateClub.Application.Handlers.Instructor.Queries;
 using KarateClub.Application.Handlers.Person;
 using KarateClub.Application.Handlers.Person.Commnds;
 using KarateClub.Application.Handlers.Person.Queries;
@@ -23,19 +25,22 @@ namespace KarateClub.Api.Controllers.Person
         private readonly GetPeopleHandler _getPeopleHandler;
         private readonly AddNewPersonHandler _addNewPersonHandler;
         private readonly UpdatePersonHandler _updatePersonHandler;
+        private readonly GetInstructorByPersonIdHandler _getInstructorByPersonIdHandler;
 
         public PersonController(
             GetPesronHandler getPesront,
             GetUserByPersonIdHandler getUserByPersonIdHandler,
             GetPeopleHandler getPeopleHandler,
             AddNewPersonHandler addNewPersonHandler,
-            UpdatePersonHandler updatePersonHandler)
+            UpdatePersonHandler updatePersonHandler,
+            GetInstructorByPersonIdHandler getInstructorByPersonIdHandler)
         {
             _getPesront = getPesront;
             _getUserByPersonIdHandler = getUserByPersonIdHandler;
             _getPeopleHandler = getPeopleHandler;
             _addNewPersonHandler = addNewPersonHandler;
             _updatePersonHandler = updatePersonHandler;
+            _getInstructorByPersonIdHandler = getInstructorByPersonIdHandler;
         }
 
         [Authorize]
@@ -49,15 +54,29 @@ namespace KarateClub.Api.Controllers.Person
             return Ok(await _getPesront.ExecuteAsync(new GetPesonbByIdQuery(id)));
         }
 
-        [Authorize]
+        [Authorize(Policy = Permissions.Users.View)]
         [HttpGet("/api/persons/{personId:int}/user")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<UserWithoutPermissionsDto>> GetUserByPersonId(int personId)
+        public async Task<ActionResult<InstructorDto>> GetUserByPersonId(int personId)
         {
             return Ok(await _getUserByPersonIdHandler.ExecuteAsync(new GetUserByPersonIdQuery(personId)));
+        }
+
+        [Authorize(Policy = Permissions.Instructors.View)]
+        [HttpGet("/api/persons/{personId:int}/instructor")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<UserWithoutPermissionsDto>> GetInstructorByPersonId(int personId)
+        {
+            return Ok(await _getInstructorByPersonIdHandler.ExecuteAsync(new GetInstructorByPersonIdQuery(personId)));
         }
 
         [Authorize]
