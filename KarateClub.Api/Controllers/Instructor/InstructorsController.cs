@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using KarateClub.Application.Handlers.Instructor.Commands;
 using KarateClub.Api.Controllers.Instructor.Requests;
+using KarateClub.Api.Controllers.Person.Requests;
+using KarateClub.Application.Handlers.Person.Commnds;
+using KarateClub.Application.Handlers.Person;
 
 namespace KarateClub.Api.Controllers.Instructor
 {
@@ -18,14 +21,16 @@ namespace KarateClub.Api.Controllers.Instructor
         private readonly DeactivateInstructorHandler _deactivateInstructorHandler;
         private readonly ActivateInstructorHandler _activateInstructorHandler;
         private readonly UpdateCurrentBletRankHandler _updateCurrentBletRankHandler;
+        private readonly CreateInstructorHandler _createInstructorHandler;
 
-        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler, ActivateInstructorHandler activateInstructorHandler, UpdateCurrentBletRankHandler updateCurrentBletRankHandler)
+        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler, ActivateInstructorHandler activateInstructorHandler, UpdateCurrentBletRankHandler updateCurrentBletRankHandler, CreateInstructorHandler createInstructorHandler)
         {
             _getInstructorHandler = getInstructorHandler;
             _getInstructorsHandler = getInstructorsHandler;
             _deactivateInstructorHandler = deactivateInstructorHandler;
             _activateInstructorHandler = activateInstructorHandler;
             _updateCurrentBletRankHandler = updateCurrentBletRankHandler;
+            _createInstructorHandler = createInstructorHandler;
         }
 
         [Authorize(Policy = Permissions.Instructors.View)]
@@ -87,6 +92,27 @@ namespace KarateClub.Api.Controllers.Instructor
         {
             await _updateCurrentBletRankHandler.ExecuteAsync(new UpdateCurrentBletRankCommand(id, request.BeltRank));
             return NoContent();
+        }
+
+        [Authorize (Policy = Permissions.Instructors.Create)]
+        [HttpPost]
+        [ProducesResponseType(typeof(InstructorDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<InstructorDto>> CreateInstructor([FromBody] CreateInstructorRequest request)
+        {
+            var command = new CreateInstructorCommand
+            {
+                BeltRankID = request.BeltRankID,
+                PersonId = request.PersonId,
+                Qualification = request.Qualification,
+            };
+
+            InstructorDto instructor = await _createInstructorHandler.ExecuteAsync(command);
+
+            return CreatedAtAction(nameof(GetInstructorById), new { id = instructor.Id }, instructor);
         }
     }
 }

@@ -22,9 +22,30 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             _connectionFactory = connectionFactory;
         }
 
-        public Task<int> AddInstructorAsync(Instructor instructor)
+        public async Task<int> AddInstructorAsync(Instructor instructor)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_AddNewInstructor", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@PersonID", instructor.PersonId);
+            command.Parameters.AddWithValue("@Qualification", instructor.Qualification);
+            command.Parameters.AddWithValue("@CurrentBeltRankID", instructor.CurrentBeltRankID);
+
+            SqlParameter output = new("@NewInstructorId", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            command.Parameters.Add(output);
+
+            await connection.OpenAsync();
+
+            await command.ExecuteNonQueryAsync();
+
+            return (int)output.Value;
         }
 
         public async Task<bool> DeactivateInstructorAsync(int id)
