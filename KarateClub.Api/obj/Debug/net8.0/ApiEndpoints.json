@@ -192,6 +192,40 @@
   },
   {
     "ContainingType": "KarateClub.Api.Controllers.Instructor.InstructorsController",
+    "Method": "GetPeople",
+    "RelativePath": "api/instructors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[KarateClub.Application.DTOs.InstructorDto, KarateClub.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "KarateClub.Api.Controllers.Instructor.InstructorsController",
     "Method": "GetInstructorById",
     "RelativePath": "api/instructors/{id}",
     "HttpMethod": "GET",
@@ -517,7 +551,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "KarateClub.Application.DTOs.UserWithoutPermissionsDto",
+        "Type": "KarateClub.Application.DTOs.InstructorDto",
         "MediaTypes": [
           "text/plain",
           "application/json",

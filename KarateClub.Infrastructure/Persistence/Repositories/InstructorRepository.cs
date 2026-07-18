@@ -9,6 +9,7 @@ using KarateClub.Domain.Entities;
 using KarateClub.Domain.ValueObjs;
 using KarateClub.Infrastructure.Persistence.Data;
 using Microsoft.Data.SqlClient;
+using static KarateClub.Application.Security.Permissions;
 
 namespace KarateClub.Infrastructure.Persistence.Repositories
 {
@@ -108,9 +109,37 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return instructor;
         }
 
-        public Task<List<Instructor>> GetInstructorsAsync()
+        public async Task<List<Instructor>> GetInstructorsAsync()
         {
-            throw new NotImplementedException();
+            List<Instructor> instructors = new();
+
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_GetInstructors", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            await connection.OpenAsync();
+
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                instructors.Add
+                (
+                    Instructor.Load
+                    (
+                        id: (int)reader["InstructorID"],
+                        personId: (int)reader["PersonID"],
+                        qualification: (string)reader["Qualification"],
+                        isActive: (bool)reader["IsActive"],
+                        CurrentBeltRankID: (int)reader["CurrentBeltRankID"],
+                        hireDate: (DateTime)reader["HireDate"]
+                    )
+                );
+            }
+
+            return instructors;
         }
 
         public Task UpdateCurrentBletRankAsync(int instructorId, int beltRankId)
