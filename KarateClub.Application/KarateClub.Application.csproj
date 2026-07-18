@@ -14,4 +14,8 @@
     <ProjectReference Include="..\KarateClub.Domain\KarateClub.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\Instructor\Commands\" />
+  </ItemGroup>
+
 </Project>

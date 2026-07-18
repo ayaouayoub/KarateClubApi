@@ -84,7 +84,7 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
 
             using SqlDataReader reader = await command.ExecuteReaderAsync();
 
-            while (await reader.ReadAsync())
+            if (await reader.ReadAsync())
             {
                 beltRank = BeltRank.Load((int)reader["RankID"], (string)reader["RankName"], (decimal)reader["TestFees"]);
             }
