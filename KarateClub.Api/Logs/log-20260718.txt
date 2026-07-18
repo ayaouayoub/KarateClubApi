@@ -147,3 +147,159 @@ System.Exception: Fialed to deactivate instructor.
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at KarateClub.Api.Middlewares.ExceptionMiddleware.Invoke(HttpContext context) in C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api\Middlewares\ExceptionMiddleware.cs:line 23
 2026-07-18 16:00:59.648 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/deactivate - 500 null application/json; charset=utf-8 1254.9397ms
+2026-07-18 16:08:45.831 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-18 16:08:47.497 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-18 16:08:47.506 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-18 16:08:48.133 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-18 16:08:48.189 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-18 16:08:48.209 +02:00 [INF] Hosting environment: Development
+2026-07-18 16:08:48.324 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-18 16:08:49.137 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 1029.4515ms
+2026-07-18 16:08:49.255 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-18 16:08:49.154 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-18 16:08:49.526 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 372.535ms
+2026-07-18 16:08:49.603 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 348.3664ms
+2026-07-18 16:08:49.968 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-18 16:08:50.482 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 515.6931ms
+2026-07-18 16:09:06.338 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/1/activate - null null
+2026-07-18 16:09:08.436 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.ActivateInstructor (KarateClub.Api)'
+2026-07-18 16:09:08.547 +02:00 [INF] Route matched with {action = "ActivateInstructor", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ActivateInstructor(Int32) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:09:08.751 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-07-18 16:09:08.763 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.ActivateInstructor (KarateClub.Api) in 198.9631ms
+2026-07-18 16:09:08.770 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.ActivateInstructor (KarateClub.Api)'
+2026-07-18 16:09:08.776 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/activate - 204 null null 2438.5011ms
+2026-07-18 16:23:56.051 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-18 16:23:57.060 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-18 16:23:57.071 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-18 16:23:58.220 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-18 16:23:59.845 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-18 16:23:59.870 +02:00 [INF] Hosting environment: Development
+2026-07-18 16:23:59.965 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-18 16:24:00.778 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 959.4865ms
+2026-07-18 16:24:00.874 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-18 16:24:00.930 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-18 16:24:00.933 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 58.6735ms
+2026-07-18 16:24:01.092 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 161.9861ms
+2026-07-18 16:24:01.647 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-18 16:24:02.088 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 441.3706ms
+2026-07-18 16:24:27.739 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - application/json 19
+2026-07-18 16:24:28.242 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - 404 0 null 512.0601ms
+2026-07-18 16:24:28.263 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PATCH https://localhost:7192/api/instructors/%22%7Bid%7D/blet-rank, Response status code: 404
+2026-07-18 16:25:05.680 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-18 16:25:06.544 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-18 16:25:06.627 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-18 16:25:07.400 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-18 16:25:07.450 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-18 16:25:07.537 +02:00 [INF] Hosting environment: Development
+2026-07-18 16:25:07.550 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-18 16:25:09.143 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 1758.409ms
+2026-07-18 16:25:09.409 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-18 16:25:09.410 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-18 16:25:09.562 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 153.4488ms
+2026-07-18 16:25:09.943 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 533.4827ms
+2026-07-18 16:25:10.078 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-18 16:25:10.702 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 623.4347ms
+2026-07-18 16:25:38.797 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - application/json 19
+2026-07-18 16:25:39.321 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - 404 0 null 592.6516ms
+2026-07-18 16:25:39.362 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PATCH https://localhost:7192/api/instructors/%22%7Bid%7D/blet-rank, Response status code: 404
+2026-07-18 16:25:48.555 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - application/json 21
+2026-07-18 16:25:48.595 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - 404 0 null 40.3937ms
+2026-07-18 16:25:48.647 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PATCH https://localhost:7192/api/instructors/%22%7Bid%7D/blet-rank, Response status code: 404
+2026-07-18 16:26:01.051 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - application/json 19
+2026-07-18 16:26:01.078 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - 404 0 null 28.8965ms
+2026-07-18 16:26:01.115 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PATCH https://localhost:7192/api/instructors/%22%7Bid%7D/blet-rank, Response status code: 404
+2026-07-18 16:26:16.876 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - application/json 19
+2026-07-18 16:26:16.885 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/"{id}/blet-rank - 404 0 null 8.9211ms
+2026-07-18 16:26:16.902 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: PATCH https://localhost:7192/api/instructors/%22%7Bid%7D/blet-rank, Response status code: 404
+2026-07-18 16:26:56.081 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-18 16:26:56.931 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-18 16:26:56.936 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-18 16:26:57.956 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-18 16:26:57.975 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-18 16:26:58.109 +02:00 [INF] Hosting environment: Development
+2026-07-18 16:26:58.161 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-18 16:26:59.156 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 1240.5372ms
+2026-07-18 16:26:59.288 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-18 16:26:59.300 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-18 16:26:59.467 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 179.9182ms
+2026-07-18 16:26:59.620 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 320.048ms
+2026-07-18 16:27:00.163 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-18 16:27:00.683 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 520.8785ms
+2026-07-18 16:27:19.813 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/2/blet-rank - application/json 21
+2026-07-18 16:27:21.331 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:27:21.461 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:27:21.987 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api) in 508.5235ms
+2026-07-18 16:27:21.995 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:27:22.301 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/2/blet-rank - 404 null application/json; charset=utf-8 2488.1745ms
+2026-07-18 16:27:30.644 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - application/json 21
+2026-07-18 16:27:30.723 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:27:30.733 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:27:30.986 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api) in 237.2182ms
+2026-07-18 16:27:30.991 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:27:31.223 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - 404 null application/json; charset=utf-8 579.1886ms
+2026-07-18 16:27:38.274 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - application/json 19
+2026-07-18 16:27:38.340 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:27:38.345 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:27:38.551 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api) in 198.2616ms
+2026-07-18 16:27:38.558 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:27:38.771 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - 400 null application/json; charset=utf-8 497.3184ms
+2026-07-18 16:27:48.647 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - application/json 19
+2026-07-18 16:27:48.693 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:27:48.706 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:27:48.884 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api) in 165.376ms
+2026-07-18 16:27:48.891 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:27:49.126 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - 400 null application/json; charset=utf-8 479.1951ms
+2026-07-18 16:28:05.366 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - application/json 19
+2026-07-18 16:28:05.395 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:28:05.408 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:28:05.562 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api) in 126.6935ms
+2026-07-18 16:28:05.572 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:28:05.753 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - 400 null application/json; charset=utf-8 386.5982ms
+2026-07-18 16:29:07.193 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-18 16:29:07.899 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-18 16:29:07.910 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-18 16:29:08.293 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-18 16:29:08.298 +02:00 [INF] Hosting environment: Development
+2026-07-18 16:29:08.397 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-18 16:29:09.064 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-18 16:29:10.470 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 1437.276ms
+2026-07-18 16:29:10.786 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-18 16:29:10.895 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-18 16:29:11.355 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 568.7255ms
+2026-07-18 16:29:11.572 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 677.2759ms
+2026-07-18 16:29:11.782 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-18 16:29:12.552 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 770.1234ms
+2026-07-18 16:29:27.638 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-18 16:29:28.274 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-18 16:29:28.279 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-18 16:29:28.927 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-18 16:29:28.968 +02:00 [INF] Hosting environment: Development
+2026-07-18 16:29:28.992 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-18 16:29:29.119 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-18 16:29:30.011 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 914.1999ms
+2026-07-18 16:29:30.148 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-18 16:29:30.155 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-18 16:29:30.231 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 84.0701ms
+2026-07-18 16:29:30.364 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 209.8255ms
+2026-07-18 16:29:30.534 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-18 16:29:31.098 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 563.7732ms
+2026-07-18 16:30:08.883 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - application/json 19
+2026-07-18 16:30:10.478 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:30:10.560 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:30:11.025 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api) in 448.0907ms
+2026-07-18 16:30:11.032 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:30:11.345 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - 400 null application/json; charset=utf-8 2461.9313ms
+2026-07-18 16:30:19.695 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - application/json 20
+2026-07-18 16:30:19.778 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:30:19.785 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:30:19.909 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-07-18 16:30:19.913 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api) in 111.3457ms
+2026-07-18 16:30:19.918 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:30:19.926 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - 204 null null 231.5933ms
+2026-07-18 16:30:57.007 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - application/json 20
+2026-07-18 16:30:57.078 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:30:57.087 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Instructors"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Instructor.InstructorsController (KarateClub.Api).
+2026-07-18 16:30:57.155 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-07-18 16:30:57.158 +02:00 [INF] Executed action KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api) in 59.3265ms
+2026-07-18 16:30:57.168 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Instructor.InstructorsController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-18 16:30:57.174 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/instructors/1/blet-rank - 204 null null 167.4024ms

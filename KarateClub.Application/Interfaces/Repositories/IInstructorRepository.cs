@@ -15,6 +15,6 @@ namespace KarateClub.Application.Interfaces.Repositories
         Task<List<Instructor>> GetInstructorsAsync();
         Task<bool> DeactivateInstructorAsync(int id);
         Task<bool> ActivateInstructorAsync(int id);
-        Task UpdateCurrentBletRankAsync(int instructorId, int beltRankId);
+        Task<bool> UpdateCurrentBletRankAsync(int instructorId, int beltRankId);
     }
 }

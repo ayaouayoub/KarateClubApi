@@ -106,6 +106,8 @@ namespace KarateClub.Api
 
             builder.Services.AddScoped<ActivateInstructorHandler>();
 
+            builder.Services.AddScoped<UpdateCurrentBletRankHandler>();
+
             builder.Services.AddInfrastructure();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

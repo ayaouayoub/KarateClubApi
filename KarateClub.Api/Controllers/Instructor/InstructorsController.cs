@@ -1,15 +1,11 @@
 ﻿using KarateClub.Application.DTOs;
 using KarateClub.Application.Handlers.Instructor;
 using KarateClub.Application.Handlers.Instructor.Queries;
-using KarateClub.Application.Handlers.Person.Queries;
-using KarateClub.Application.Handlers.Person;
-using KarateClub.Application.Handlers.User.Queries;
 using KarateClub.Application.Security;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using KarateClub.Application.Handlers.User.Commands;
 using KarateClub.Application.Handlers.Instructor.Commands;
+using KarateClub.Api.Controllers.Instructor.Requests;
 
 namespace KarateClub.Api.Controllers.Instructor
 {
@@ -21,13 +17,15 @@ namespace KarateClub.Api.Controllers.Instructor
         private readonly GetInstructorsHandler _getInstructorsHandler;
         private readonly DeactivateInstructorHandler _deactivateInstructorHandler;
         private readonly ActivateInstructorHandler _activateInstructorHandler;
+        private readonly UpdateCurrentBletRankHandler _updateCurrentBletRankHandler;
 
-        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler, ActivateInstructorHandler activateInstructorHandler)
+        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler, ActivateInstructorHandler activateInstructorHandler, UpdateCurrentBletRankHandler updateCurrentBletRankHandler)
         {
             _getInstructorHandler = getInstructorHandler;
             _getInstructorsHandler = getInstructorsHandler;
             _deactivateInstructorHandler = deactivateInstructorHandler;
             _activateInstructorHandler = activateInstructorHandler;
+            _updateCurrentBletRankHandler = updateCurrentBletRankHandler;
         }
 
         [Authorize(Policy = Permissions.Instructors.View)]
@@ -75,6 +73,19 @@ namespace KarateClub.Api.Controllers.Instructor
         public async Task<IActionResult> ActivateInstructor(int id)
         {
             await _activateInstructorHandler.ExecuteAsync(new ActivateInstructorCommand(id));
+            return NoContent();
+        }
+
+        [Authorize]
+        [HttpPatch("{id:int}/blet-rank")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateCurrentBletRank(int id, [FromBody] UpdateCurrentBletRankRequest request)
+        {
+            await _updateCurrentBletRankHandler.ExecuteAsync(new UpdateCurrentBletRankCommand(id, request.BeltRank));
             return NoContent();
         }
     }

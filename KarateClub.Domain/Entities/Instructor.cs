@@ -76,6 +76,7 @@ namespace KarateClub.Domain.Entities
         private void _ValdateBeltRank(BeltRank beltRank)
         {
             if (BeltRank == null) throw new DomainException("Belt rank cannot be null");
+            if (beltRank.Id == CurrentBeltRankID) throw new DomainException("The instructor already has this belt rank");
         }
     }
 }

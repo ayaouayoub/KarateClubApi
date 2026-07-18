@@ -170,9 +170,22 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return instructors;
         }
 
-        public Task UpdateCurrentBletRankAsync(int instructorId, int beltRankId)
+        public async Task<bool> UpdateCurrentBletRankAsync(int instructorId, int beltRankId)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_UpdateCurrentBletRank", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@IntructorId", instructorId);
+            command.Parameters.AddWithValue("@BeltRankId", beltRankId);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
         }
     }
 }
