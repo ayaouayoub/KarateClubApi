@@ -27,11 +27,22 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeactivateInstructorAsync(int id)
+        public async Task<bool> DeactivateInstructorAsync(int id)
         {
-            throw new NotImplementedException();
-        }
+            using SqlConnection connection = _connectionFactory.CreateConnection();
 
+            using SqlCommand command = new("usp_DeactivateIntructor", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@IntructorId", id);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
+        }
 
         public async Task<Instructor?> GetByIdAsync(int id)
         {

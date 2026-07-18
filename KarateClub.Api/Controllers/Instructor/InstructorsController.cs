@@ -8,6 +8,8 @@ using KarateClub.Application.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using KarateClub.Application.Handlers.User.Commands;
+using KarateClub.Application.Handlers.Instructor.Commands;
 
 namespace KarateClub.Api.Controllers.Instructor
 {
@@ -17,11 +19,13 @@ namespace KarateClub.Api.Controllers.Instructor
     {
         private readonly GetInstructorHandler _getInstructorHandler;
         private readonly GetInstructorsHandler _getInstructorsHandler;
+        private readonly DeactivateInstructorHandler _deactivateInstructorHandler;
 
-        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler)
+        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler)
         {
             _getInstructorHandler = getInstructorHandler;
             _getInstructorsHandler = getInstructorsHandler;
+            _deactivateInstructorHandler = deactivateInstructorHandler;
         }
 
         [Authorize(Policy = Permissions.Instructors.View)]
@@ -44,6 +48,19 @@ namespace KarateClub.Api.Controllers.Instructor
         public async Task<ActionResult<IEnumerable<InstructorDto>>> GetPeople()
         {
             return Ok(await _getInstructorsHandler.ExecuteAsync(new GetInstructorsQuery()));
+        }
+
+        [Authorize(Policy = Permissions.Instructors.Delete)]
+        [HttpPatch("{id:int}/deactivate")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> DeactivateInstructor(int id)
+        {
+            await _deactivateInstructorHandler.ExecuteAsync(new DeactivateInstructorCommand(id));
+            return NoContent();
         }
     }
 }
