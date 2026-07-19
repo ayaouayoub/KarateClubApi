@@ -252,3 +252,109 @@ KarateClub.Infrastructure.Authorization.PermissionRequirement
 2026-07-19 12:13:31.189 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.DeactivateMember (KarateClub.Api) in 153.31ms
 2026-07-19 12:13:31.193 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.DeactivateMember (KarateClub.Api)'
 2026-07-19 12:13:31.201 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/deactivate - 204 null null 234.4814ms
+2026-07-19 12:19:58.778 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-19 12:20:00.389 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-19 12:20:00.482 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-19 12:20:01.433 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-19 12:20:01.529 +02:00 [INF] Hosting environment: Development
+2026-07-19 12:20:01.532 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-19 12:20:01.560 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-19 12:20:03.631 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 2110.7306ms
+2026-07-19 12:20:04.049 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-19 12:20:04.049 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-19 12:20:04.144 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 85.7198ms
+2026-07-19 12:20:04.382 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 332.7027ms
+2026-07-19 12:20:05.842 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-19 12:20:06.617 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 775.4518ms
+2026-07-19 12:20:19.598 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/1/activate - null null
+2026-07-19 12:20:21.551 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.ActivateMember (KarateClub.Api)'
+2026-07-19 12:20:21.656 +02:00 [INF] Route matched with {action = "ActivateMember", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ActivateMember(Int32) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 12:20:22.131 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.ActivateMember (KarateClub.Api) in 457.1358ms
+2026-07-19 12:20:22.139 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.ActivateMember (KarateClub.Api)'
+2026-07-19 12:20:22.482 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/1/activate - 404 null application/json; charset=utf-8 2884.7425ms
+2026-07-19 12:20:26.865 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/2/activate - null null
+2026-07-19 12:20:26.927 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.ActivateMember (KarateClub.Api)'
+2026-07-19 12:20:26.934 +02:00 [INF] Route matched with {action = "ActivateMember", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ActivateMember(Int32) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 12:20:27.050 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-07-19 12:20:27.055 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.ActivateMember (KarateClub.Api) in 95.1453ms
+2026-07-19 12:20:27.062 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.ActivateMember (KarateClub.Api)'
+2026-07-19 12:20:27.070 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/activate - 204 null null 204.3669ms
+2026-07-19 14:04:48.695 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-19 14:04:49.801 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-19 14:04:49.809 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-19 14:04:51.083 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-19 14:04:51.248 +02:00 [INF] Hosting environment: Development
+2026-07-19 14:04:51.277 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-19 14:04:51.329 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-19 14:04:52.956 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 1655.0465ms
+2026-07-19 14:04:53.054 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-19 14:04:53.054 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-19 14:04:53.294 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 241.722ms
+2026-07-19 14:04:53.459 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 405.4212ms
+2026-07-19 14:04:53.599 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-19 14:04:54.362 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 762.9902ms
+2026-07-19 14:05:39.016 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/1/blet-rank - application/json 19
+2026-07-19 14:05:39.507 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/19/2026 10:21:00 AM', Current time (UTC): '7/19/2026 12:05:39 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-19 14:05:39.575 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/19/2026 10:21:00 AM', Current time (UTC): '7/19/2026 12:05:39 PM'.
+2026-07-19 14:05:39.634 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+KarateClub.Infrastructure.Authorization.ActiveUserRequirement
+2026-07-19 14:05:39.655 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-07-19 14:05:39.661 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/1/blet-rank - 401 0 null 644.8191ms
+2026-07-19 14:05:51.063 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - application/json 19
+2026-07-19 14:05:51.187 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/19/2026 10:21:00 AM', Current time (UTC): '7/19/2026 12:05:51 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-19 14:05:51.247 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/19/2026 10:21:00 AM', Current time (UTC): '7/19/2026 12:05:51 PM'.
+2026-07-19 14:05:51.256 +02:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+KarateClub.Infrastructure.Authorization.ActiveUserRequirement
+2026-07-19 14:05:51.263 +02:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-07-19 14:05:51.266 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - 401 0 null 203.4204ms
+2026-07-19 14:06:20.239 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7192/api/auth/login - application/json 52
+2026-07-19 14:06:20.343 +02:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/19/2026 10:21:00 AM', Current time (UTC): '7/19/2026 12:06:20 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-07-19 14:06:20.374 +02:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '7/19/2026 10:21:00 AM', Current time (UTC): '7/19/2026 12:06:20 PM'.
+2026-07-19 14:06:20.389 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api)'
+2026-07-19 14:06:20.484 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[KarateClub.Application.DTOs.LoginResponseDto]] Login(KarateClub.Api.Controllers.Authentication.Requests.LoginRequest) on controller KarateClub.Api.Controllers.Authentication.AuthController (KarateClub.Api).
+2026-07-19 14:06:23.303 +02:00 [INF] Executing OkObjectResult, writing value of type 'KarateClub.Application.DTOs.LoginResponseDto'.
+2026-07-19 14:06:23.340 +02:00 [INF] Executed action KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api) in 2835.1897ms
+2026-07-19 14:06:23.347 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api)'
+2026-07-19 14:06:23.352 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7192/api/auth/login - 200 null application/json; charset=utf-8 3112.8939ms
+2026-07-19 14:06:50.232 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/1/blet-rank - application/json 19
+2026-07-19 14:06:50.499 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-19 14:06:50.523 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 14:06:50.863 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api) in 330.4403ms
+2026-07-19 14:06:50.873 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-19 14:06:51.279 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/1/blet-rank - 404 null application/json; charset=utf-8 1049.015ms
+2026-07-19 14:07:02.044 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - application/json 21
+2026-07-19 14:07:02.175 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-19 14:07:02.182 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 14:07:02.549 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api) in 344.1271ms
+2026-07-19 14:07:02.557 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-19 14:07:02.878 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - 404 null application/json; charset=utf-8 833.72ms
+2026-07-19 14:07:09.095 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - application/json 20
+2026-07-19 14:07:09.124 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-19 14:07:09.128 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 14:07:09.350 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api) in 209.2532ms
+2026-07-19 14:07:09.358 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-19 14:07:09.608 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - 400 null application/json; charset=utf-8 513.0797ms
+2026-07-19 14:07:17.719 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - application/json 19
+2026-07-19 14:07:17.752 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-19 14:07:17.760 +02:00 [INF] Route matched with {action = "UpdateCurrentBletRank", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateCurrentBletRank(Int32, KarateClub.Api.Controllers.Instructor.Requests.UpdateCurrentBletRankRequest) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 14:07:17.844 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-07-19 14:07:17.849 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api) in 78.2647ms
+2026-07-19 14:07:17.855 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
+2026-07-19 14:07:17.879 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - 204 null null 159.7289ms

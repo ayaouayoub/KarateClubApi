@@ -21,9 +21,21 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             _connectionFactory = connectionFactory;
         }
 
-        public Task<bool> ActivateMemberAsync(int id)
+        public async Task<bool> ActivateMemberAsync(int id)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_ActivateMember", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@MemberId", id);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
         }
 
         public async Task<bool> DeactivateMemberAsync(int id)
@@ -148,9 +160,21 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return members;
         }
 
-        public Task<bool> UpdateCurrentBletRankAsync(int memberId, int beltRankId)
+        public async Task<bool> UpdateCurrentBletRankAsync(int memberId, int beltRankId)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_UpdateMemberCurrentBletRank", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@MemberId", memberId);
+            command.Parameters.AddWithValue("@BeltRankId", beltRankId);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
         }
 
         public Task<bool> UpdateEmergencyContactInfoAsync(int memberId, string emergencyContactInfo)

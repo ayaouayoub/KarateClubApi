@@ -18,9 +18,5 @@
     <ProjectReference Include="..\KarateClub.Infrastructure\KarateClub.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Member\Requests\" />
-  </ItemGroup>
-
 
 </Project>

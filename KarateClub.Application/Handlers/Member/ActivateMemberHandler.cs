@@ -10,22 +10,22 @@ using KarateClub.Application.Interfaces.Repositories;
 
 namespace KarateClub.Application.Handlers.Member
 {
-    public class DeactivateMemberHandler
+    public class ActivateMemberHandler
     {
         private readonly IMemberRepository _memberRepository;
 
-        public DeactivateMemberHandler(IMemberRepository memberRepository)
+        public ActivateMemberHandler(IMemberRepository memberRepository)
         {
             _memberRepository = memberRepository;
         }
 
-        public async Task ExecuteAsync(DeactivateMemberCommand command)
+        public async Task ExecuteAsync(ActivateMemberCommand command)
         {
-            var member = await _memberRepository.GetByIdAsync(command.MmeberId) ?? throw new NotFoundException("Member not found.");
+            var member = await _memberRepository.GetByIdAsync(command.MemberId) ?? throw new NotFoundException("Member not found.");
 
-            member.Deactivate();
+            member.Activate();
 
-            if (!await _memberRepository.DeactivateMemberAsync(command.MmeberId)) throw new Exception("Fialed to deactivate member.");
+            if (!await _memberRepository.ActivateMemberAsync(command.MemberId)) throw new Exception("Fialed to Activate member.");
         }
     }
 }
