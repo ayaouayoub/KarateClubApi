@@ -14,6 +14,7 @@ using KarateClub.Application.Handlers.BeltRank;
 using KarateClub.Application.Handlers.SubscriptionPlan;
 using KarateClub.Application.Handlers.Instructor;
 using KarateClub.Application.Handlers.Member;
+using KarateClub.Application.Handlers.Member.Commands;
 
 namespace KarateClub.Api
 {
@@ -122,6 +123,8 @@ namespace KarateClub.Api
             builder.Services.AddScoped<ActivateMemberHandler>();
 
             builder.Services.AddScoped<UpdateMemberCurrentBletRankHandler>();
+
+            builder.Services.AddScoped<UpdateEmergencyContactInfoHandler>();
 
             builder.Services.AddInfrastructure();
 

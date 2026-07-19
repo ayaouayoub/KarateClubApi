@@ -358,3 +358,49 @@ Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime
 2026-07-19 14:07:17.849 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api) in 78.2647ms
 2026-07-19 14:07:17.855 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateCurrentBletRank (KarateClub.Api)'
 2026-07-19 14:07:17.879 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/blet-rank - 204 null null 159.7289ms
+2026-07-19 14:25:27.441 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-19 14:25:29.782 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-19 14:25:29.791 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-19 14:25:31.810 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-19 14:25:32.439 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-19 14:25:32.720 +02:00 [INF] Hosting environment: Development
+2026-07-19 14:25:33.046 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-19 14:25:34.550 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 2177.1898ms
+2026-07-19 14:25:34.821 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-19 14:25:34.821 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-19 14:25:34.886 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 60.3318ms
+2026-07-19 14:25:35.075 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 254.485ms
+2026-07-19 14:25:35.576 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-19 14:25:36.350 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 773.8559ms
+2026-07-19 14:26:48.511 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7192/api/auth/login - application/json 52
+2026-07-19 14:26:48.938 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api)'
+2026-07-19 14:26:49.060 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[KarateClub.Application.DTOs.LoginResponseDto]] Login(KarateClub.Api.Controllers.Authentication.Requests.LoginRequest) on controller KarateClub.Api.Controllers.Authentication.AuthController (KarateClub.Api).
+2026-07-19 14:26:51.652 +02:00 [INF] Executing OkObjectResult, writing value of type 'KarateClub.Application.DTOs.LoginResponseDto'.
+2026-07-19 14:26:51.695 +02:00 [INF] Executed action KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api) in 2612.7234ms
+2026-07-19 14:26:51.701 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Authentication.AuthController.Login (KarateClub.Api)'
+2026-07-19 14:26:51.710 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7192/api/auth/login - 200 null application/json; charset=utf-8 3202.1616ms
+2026-07-19 14:27:19.910 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/1/emergeny-contact - application/json 38
+2026-07-19 14:27:20.345 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api)'
+2026-07-19 14:27:20.374 +02:00 [INF] Route matched with {action = "UpdateEmergenyContact", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateEmergenyContact(Int32, KarateClub.Api.Controllers.Member.Requests.UpdateEmergencyContactInfoRequest) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 14:27:20.725 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api) in 334.8134ms
+2026-07-19 14:27:20.732 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api)'
+2026-07-19 14:27:21.163 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/1/emergeny-contact - 404 null application/json; charset=utf-8 1253.6188ms
+2026-07-19 14:27:34.932 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/1/emergeny-contact - application/json 55
+2026-07-19 14:27:35.017 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api)'
+2026-07-19 14:27:35.022 +02:00 [INF] Route matched with {action = "UpdateEmergenyContact", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateEmergenyContact(Int32, KarateClub.Api.Controllers.Member.Requests.UpdateEmergencyContactInfoRequest) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 14:27:35.285 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api) in 248.5352ms
+2026-07-19 14:27:35.308 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api)'
+2026-07-19 14:27:35.532 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/1/emergeny-contact - 404 null application/json; charset=utf-8 601.8565ms
+2026-07-19 14:27:41.907 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/2/emergeny-contact - application/json 55
+2026-07-19 14:27:42.036 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api)'
+2026-07-19 14:27:42.101 +02:00 [INF] Route matched with {action = "UpdateEmergenyContact", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateEmergenyContact(Int32, KarateClub.Api.Controllers.Member.Requests.UpdateEmergencyContactInfoRequest) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 14:27:42.450 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api) in 321.3077ms
+2026-07-19 14:27:42.501 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api)'
+2026-07-19 14:27:42.890 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/emergeny-contact - 400 null application/json; charset=utf-8 982.7834ms
+2026-07-19 14:27:53.421 +02:00 [INF] Request starting HTTP/2 PATCH https://localhost:7192/api/members/2/emergeny-contact - application/json 45
+2026-07-19 14:27:53.571 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api)'
+2026-07-19 14:27:53.580 +02:00 [INF] Route matched with {action = "UpdateEmergenyContact", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UpdateEmergenyContact(Int32, KarateClub.Api.Controllers.Member.Requests.UpdateEmergencyContactInfoRequest) on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 14:27:53.743 +02:00 [INF] Executing StatusCodeResult, setting HTTP status code 204
+2026-07-19 14:27:53.749 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api) in 151.2685ms
+2026-07-19 14:27:53.756 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.UpdateEmergenyContact (KarateClub.Api)'
+2026-07-19 14:27:53.767 +02:00 [INF] Request finished HTTP/2 PATCH https://localhost:7192/api/members/2/emergeny-contact - 204 null null 346.426ms

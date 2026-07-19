@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using KarateClub.Application.Handlers.Member.Commands;
 using KarateClub.Api.Controllers.Instructor.Requests;
+using KarateClub.Api.Controllers.Member.Requests;
 
 namespace KarateClub.Api.Controllers.Member
 {
@@ -18,14 +19,16 @@ namespace KarateClub.Api.Controllers.Member
         private readonly DeactivateMemberHandler _deactivateMemberHandler;
         private readonly ActivateMemberHandler _activateMemberHandler;
         private readonly UpdateMemberCurrentBletRankHandler _updateMemberCurrentBletRankHandler;
+        private readonly UpdateEmergencyContactInfoHandler _updateEmergencyContactInfoHandler;
 
-        public MembersController(GetMemberHandler getMemberHandler, GetMembersHandler getMembersHandler, DeactivateMemberHandler deactivateMemberHandler, ActivateMemberHandler activateMemberHandler, UpdateMemberCurrentBletRankHandler updateMemberCurrentBletRankHandler)
+        public MembersController(GetMemberHandler getMemberHandler, GetMembersHandler getMembersHandler, DeactivateMemberHandler deactivateMemberHandler, ActivateMemberHandler activateMemberHandler, UpdateMemberCurrentBletRankHandler updateMemberCurrentBletRankHandler, UpdateEmergencyContactInfoHandler updateEmergencyContactInfoHandler)
         {
             _getMemberHandler = getMemberHandler;
             _getMembersHandler = getMembersHandler;
             _deactivateMemberHandler = deactivateMemberHandler;
             _activateMemberHandler = activateMemberHandler;
             _updateMemberCurrentBletRankHandler = updateMemberCurrentBletRankHandler;
+            _updateEmergencyContactInfoHandler = updateEmergencyContactInfoHandler;
         }
 
         [Authorize(Policy = Permissions.Members.View)]
@@ -76,7 +79,7 @@ namespace KarateClub.Api.Controllers.Member
             return NoContent();
         }
 
-        [Authorize]
+        [Authorize (Policy = Permissions.Members.Update)]
         [HttpPatch("{id:int}/blet-rank")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -86,6 +89,19 @@ namespace KarateClub.Api.Controllers.Member
         public async Task<IActionResult> UpdateCurrentBletRank(int id, [FromBody] UpdateCurrentBletRankRequest request)
         {
             await _updateMemberCurrentBletRankHandler.ExecuteAsync(new UpdateMemberCurrentBletRankCommand(id, request.BeltRank));
+            return NoContent();
+        }
+
+        [Authorize]
+        [HttpPatch("{id:int}/emergeny-contact")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> UpdateEmergenyContact(int id, [FromBody] UpdateEmergencyContactInfoRequest request)
+        {
+            await _updateEmergencyContactInfoHandler.ExecuteAsync(new UpdateEmergencyContactInfoCommand(id, request.EmergencyContactInfo));
             return NoContent();
         }
     }

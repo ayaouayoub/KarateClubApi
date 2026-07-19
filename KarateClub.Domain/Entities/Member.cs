@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using KarateClub.Domain.Exceptions;
@@ -12,7 +13,7 @@ namespace KarateClub.Domain.Entities
         public int Id { get; }
         public int PersonId { get; }
         public Person? Person { get; }
-        public string? EmergencyContactInfo { get; }
+        public string? EmergencyContactInfo { get; private set;  }
         public bool IsActive { get; private set; }
         public int LastBeltRankID { get; private set; }
         public BeltRank? BeltRank { get; private set; }
@@ -67,6 +68,13 @@ namespace KarateClub.Domain.Entities
             _ValdateBeltRank(beltRank);
             BeltRank = beltRank;
             LastBeltRankID = beltRank.Id;
+        }
+
+        public void ChangeEmergencyContactInfo(string emergencyContactInfo)
+        {
+            emergencyContactInfo = emergencyContactInfo.Trim();
+            if (EmergencyContactInfo == emergencyContactInfo) throw new DomainException("Emergency contact information must be different from the current value.");
+            EmergencyContactInfo = emergencyContactInfo;
         }
 
         private void _ValdateBeltRank(BeltRank beltRank)

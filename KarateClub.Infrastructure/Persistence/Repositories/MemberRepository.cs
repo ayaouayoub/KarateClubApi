@@ -9,6 +9,7 @@ using KarateClub.Domain.Entities;
 using KarateClub.Domain.ValueObjs;
 using KarateClub.Infrastructure.Persistence.Data;
 using Microsoft.Data.SqlClient;
+using static KarateClub.Application.Security.Permissions;
 
 namespace KarateClub.Infrastructure.Persistence.Repositories
 {
@@ -177,9 +178,21 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return affectedRows > 0;
         }
 
-        public Task<bool> UpdateEmergencyContactInfoAsync(int memberId, string emergencyContactInfo)
+        public async Task<bool> UpdateEmergencyContactInfoAsync(int memberId, string emergencyContactInfo)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_UpdateEmergencyContactInfo", connection);
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@MemberId", memberId);
+            command.Parameters.AddWithValue("@EmergencyContactInfo", emergencyContactInfo);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
         }
     }
 }

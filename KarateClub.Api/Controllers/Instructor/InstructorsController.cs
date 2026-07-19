@@ -81,7 +81,7 @@ namespace KarateClub.Api.Controllers.Instructor
             return NoContent();
         }
 
-        [Authorize]
+        [Authorize (Policy = Permissions.Instructors.Update)]
         [HttpPatch("{id:int}/blet-rank")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
