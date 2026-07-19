@@ -50,7 +50,7 @@ namespace KarateClub.Api.Controllers.Instructor
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<IEnumerable<InstructorDto>>> GetPeople()
+        public async Task<ActionResult<IEnumerable<InstructorDto>>> GetInstructors()
         {
             return Ok(await _getInstructorsHandler.ExecuteAsync(new GetInstructorsQuery()));
         }

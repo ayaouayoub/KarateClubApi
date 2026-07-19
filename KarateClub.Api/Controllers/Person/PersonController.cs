@@ -3,6 +3,8 @@ using KarateClub.Api.Controllers.User.Requests;
 using KarateClub.Application.DTOs;
 using KarateClub.Application.Handlers.Instructor;
 using KarateClub.Application.Handlers.Instructor.Queries;
+using KarateClub.Application.Handlers.Member;
+using KarateClub.Application.Handlers.Member.Queries;
 using KarateClub.Application.Handlers.Person;
 using KarateClub.Application.Handlers.Person.Commnds;
 using KarateClub.Application.Handlers.Person.Queries;
@@ -26,6 +28,7 @@ namespace KarateClub.Api.Controllers.Person
         private readonly AddNewPersonHandler _addNewPersonHandler;
         private readonly UpdatePersonHandler _updatePersonHandler;
         private readonly GetInstructorByPersonIdHandler _getInstructorByPersonIdHandler;
+        private readonly GetMemberByPersonIdHandler _getMemberByPersonIdHandler;
 
         public PersonController(
             GetPesronHandler getPesront,
@@ -33,7 +36,8 @@ namespace KarateClub.Api.Controllers.Person
             GetPeopleHandler getPeopleHandler,
             AddNewPersonHandler addNewPersonHandler,
             UpdatePersonHandler updatePersonHandler,
-            GetInstructorByPersonIdHandler getInstructorByPersonIdHandler)
+            GetInstructorByPersonIdHandler getInstructorByPersonIdHandler,
+            GetMemberByPersonIdHandler getMemberByPersonIdHandler)
         {
             _getPesront = getPesront;
             _getUserByPersonIdHandler = getUserByPersonIdHandler;
@@ -41,6 +45,7 @@ namespace KarateClub.Api.Controllers.Person
             _addNewPersonHandler = addNewPersonHandler;
             _updatePersonHandler = updatePersonHandler;
             _getInstructorByPersonIdHandler = getInstructorByPersonIdHandler;
+            _getMemberByPersonIdHandler = getMemberByPersonIdHandler;
         }
 
         [Authorize]
@@ -58,7 +63,6 @@ namespace KarateClub.Api.Controllers.Person
         [HttpGet("/api/persons/{personId:int}/user")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -77,6 +81,18 @@ namespace KarateClub.Api.Controllers.Person
         public async Task<ActionResult<UserWithoutPermissionsDto>> GetInstructorByPersonId(int personId)
         {
             return Ok(await _getInstructorByPersonIdHandler.ExecuteAsync(new GetInstructorByPersonIdQuery(personId)));
+        }
+
+        [Authorize(Policy = Permissions.Members.View)]
+        [HttpGet("/api/persons/{personId:int}/member")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<MemberDto>> GetMemberByPersonId(int personId)
+        {
+            return Ok(await _getMemberByPersonIdHandler.ExecuteAsync(new GetMemberByPersonIdQuery(personId)));
         }
 
         [Authorize]
