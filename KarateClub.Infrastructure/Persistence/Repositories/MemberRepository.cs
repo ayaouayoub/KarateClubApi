@@ -26,9 +26,21 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> DeactivateMemberAsync(int id)
+        public async Task<bool> DeactivateMemberAsync(int id)
         {
-            throw new NotImplementedException();
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_DeactivateMember", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@MemberId", id);
+
+            await connection.OpenAsync();
+
+            int affectedRows = await command.ExecuteNonQueryAsync();
+
+            return affectedRows > 0;
         }
 
         public async Task<Member?> GetByIdAsync(int id)
