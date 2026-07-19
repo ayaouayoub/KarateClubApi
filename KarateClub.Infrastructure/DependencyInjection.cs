@@ -39,6 +39,8 @@ namespace KarateClub.Infrastructure
 
             services.AddScoped<IInstructorRepository, InstructorRepository>();
 
+            services.AddScoped<IMemberRepository, MemberRepository>();
+
             return services;
         }
     }

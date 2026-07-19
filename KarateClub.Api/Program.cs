@@ -13,6 +13,7 @@ using Serilog;
 using KarateClub.Application.Handlers.BeltRank;
 using KarateClub.Application.Handlers.SubscriptionPlan;
 using KarateClub.Application.Handlers.Instructor;
+using KarateClub.Application.Handlers.Member;
 
 namespace KarateClub.Api
 {
@@ -109,6 +110,8 @@ namespace KarateClub.Api
             builder.Services.AddScoped<UpdateCurrentBletRankHandler>();
 
             builder.Services.AddScoped<CreateInstructorHandler>();
+
+            builder.Services.AddScoped<GetMemberHandler>();
 
             builder.Services.AddInfrastructure();
 

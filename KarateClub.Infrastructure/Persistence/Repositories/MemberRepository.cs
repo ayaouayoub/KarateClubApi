@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using KarateClub.Application.Interfaces.Repositories;
+using KarateClub.Domain.Entities;
+using KarateClub.Domain.ValueObjs;
+using KarateClub.Infrastructure.Persistence.Data;
+using Microsoft.Data.SqlClient;
+
+namespace KarateClub.Infrastructure.Persistence.Repositories
+{
+    public class MemberRepository : IMemberRepository
+    {
+        private readonly IDbConnectionFactory _connectionFactory;
+
+        public MemberRepository(IDbConnectionFactory connectionFactory)
+        {
+            _connectionFactory = connectionFactory;
+        }
+
+        public Task<bool> ActivateMemberAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> DeactivateMemberAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Member?> GetByIdAsync(int id)
+        {
+            Member? member = null;
+
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+            using SqlCommand command = new("usp_GetMemberByID", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@MemberId", id);
+
+            await connection.OpenAsync();
+
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            if (await reader.ReadAsync())
+            {
+                Person person = Person.Load
+                (
+                    id: (int)reader["PersonId"],
+                    name: (string)reader["Name"],
+                    address: reader["Address"] as string,
+                    email: new Email((string)reader["Email"])
+                );
+
+                BeltRank beltRank = BeltRank.Load
+                (
+                    id: (int)reader["RankID"],
+                    name: (string)reader["RankName"],
+                    testFees: (decimal)reader["TestFees"]
+                );
+
+                member = Member.LoadWithPersonAndBeltRank
+                (
+                    id: (int)reader["MemberID"],
+                    person: person,
+                    emergencyContactInfo: (string)reader["EmergencyContactInfo"],
+                    isActive: (bool)reader["IsActive"],
+                    beltRank: beltRank
+                );
+            }
+
+            return member;
+        }
+
+        public Task<Member?> GetByPersonIdAsync(int personId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Member>> GetMembersAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateCurrentBletRankAsync(int memberId, int beltRankId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateEmergencyContactInfoAsync(int memberId, string emergencyContactInfo)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

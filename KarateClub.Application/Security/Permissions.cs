@@ -52,6 +52,14 @@ namespace KarateClub.Application.Security
             public const string Delete = "Payments.Delete";
         }
 
+        public static class Members
+        {
+            public const string View = "Members.View";
+            public const string Create = "Members.Create";
+            public const string Update = "Members.Update";
+            public const string Delete = "Members.Delete";
+        }
+
         public static IEnumerable<string> GetAll()
         {
             return typeof(Permissions).GetNestedTypes(BindingFlags.Public).SelectMany(type => type.GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy).Where(field => field.IsLiteral && !field.IsInitOnly).Select(field => field.GetRawConstantValue()!.ToString()!));
