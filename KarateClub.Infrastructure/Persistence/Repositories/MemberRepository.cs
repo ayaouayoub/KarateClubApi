@@ -104,9 +104,36 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return member;
         }
 
-        public Task<List<Member>> GetMembersAsync()
+        public async Task<List<Member>> GetMembersAsync()
         {
-            throw new NotImplementedException();
+            List<Member> members = new();
+
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_GetMembers", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            await connection.OpenAsync();
+
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                members.Add
+                (
+                    Member.Load
+                    (
+                        id: (int)reader["MemberID"],
+                        personId: (int)reader["PersonID"],
+                        emergencyContactInfo: (string)reader["EmergencyContactInfo"],
+                        isActive: (bool)reader["IsActive"],
+                        lastBeltRankID: (int)reader["lastBeltRank"]
+                    )
+                );
+            }
+
+            return members;
         }
 
         public Task<bool> UpdateCurrentBletRankAsync(int memberId, int beltRankId)

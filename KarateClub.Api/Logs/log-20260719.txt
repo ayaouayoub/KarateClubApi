@@ -204,3 +204,24 @@ KarateClub.Infrastructure.Authorization.PermissionRequirement
 2026-07-19 10:41:27.321 +02:00 [INF] Executed action KarateClub.Api.Controllers.Person.PersonController.GetMemberByPersonId (KarateClub.Api) in 172.5801ms
 2026-07-19 10:41:27.332 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Person.PersonController.GetMemberByPersonId (KarateClub.Api)'
 2026-07-19 10:41:27.350 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/api/persons/1/member - 200 null application/json; charset=utf-8 1966.1417ms
+2026-07-19 10:49:53.207 +02:00 [INF] User profile is available. Using 'C:\Users\hp\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-07-19 10:49:54.073 +02:00 [INF] Now listening on: https://localhost:7192
+2026-07-19 10:49:54.080 +02:00 [INF] Now listening on: http://localhost:5076
+2026-07-19 10:49:54.944 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-07-19 10:49:55.237 +02:00 [INF] Hosting environment: Development
+2026-07-19 10:49:55.276 +02:00 [INF] Content root path: C:\Users\hp\Documents\My Workspace\programming-workspace\Programming_Advice_Roadmap\Restfull Api\KarateClub\KarateClub.Api
+2026-07-19 10:49:55.415 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/index.html - null null
+2026-07-19 10:49:56.553 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/index.html - 200 null text/html;charset=utf-8 1163.8038ms
+2026-07-19 10:49:56.897 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - null null
+2026-07-19 10:49:56.907 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/_vs/browserLink - null null
+2026-07-19 10:49:56.983 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_framework/aspnetcore-browser-refresh.js - 200 16513 application/javascript; charset=utf-8 86.8869ms
+2026-07-19 10:49:57.359 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/_vs/browserLink - 200 null text/javascript; charset=UTF-8 452.2214ms
+2026-07-19 10:49:57.714 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - null null
+2026-07-19 10:49:58.422 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 705.768ms
+2026-07-19 10:50:08.847 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7192/api/members - null null
+2026-07-19 10:50:11.009 +02:00 [INF] Executing endpoint 'KarateClub.Api.Controllers.Member.MembersController.GetMembers (KarateClub.Api)'
+2026-07-19 10:50:11.102 +02:00 [INF] Route matched with {action = "GetMembers", controller = "Members"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[KarateClub.Application.DTOs.MemberDto]]] GetMembers() on controller KarateClub.Api.Controllers.Member.MembersController (KarateClub.Api).
+2026-07-19 10:50:11.197 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+SelectListIterator`2[[KarateClub.Domain.Entities.Member, KarateClub.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[KarateClub.Application.DTOs.MemberDto, KarateClub.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-07-19 10:50:11.250 +02:00 [INF] Executed action KarateClub.Api.Controllers.Member.MembersController.GetMembers (KarateClub.Api) in 120.7721ms
+2026-07-19 10:50:11.263 +02:00 [INF] Executed endpoint 'KarateClub.Api.Controllers.Member.MembersController.GetMembers (KarateClub.Api)'
+2026-07-19 10:50:11.270 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7192/api/members - 200 null application/json; charset=utf-8 2422.9868ms

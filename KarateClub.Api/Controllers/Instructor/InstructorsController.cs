@@ -45,7 +45,7 @@ namespace KarateClub.Api.Controllers.Instructor
             return Ok(await _getInstructorHandler.ExecuteAsync(new GetInstructorQuery(id)));
         }
 
-        [Authorize]
+        [Authorize (Policy = Permissions.Instructors.View)]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]

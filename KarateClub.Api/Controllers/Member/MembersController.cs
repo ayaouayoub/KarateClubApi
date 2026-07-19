@@ -14,10 +14,12 @@ namespace KarateClub.Api.Controllers.Member
     public class MembersController : ControllerBase
     {
         private readonly GetMemberHandler _getMemberHandler;
+        private readonly GetMembersHandler _getMembersHandler;
 
-        public MembersController(GetMemberHandler getMemberHandler)
+        public MembersController(GetMemberHandler getMemberHandler, GetMembersHandler getMembersHandler)
         {
             _getMemberHandler = getMemberHandler;
+            _getMembersHandler = getMembersHandler;
         }
 
         [Authorize(Policy = Permissions.Members.View)]
@@ -30,6 +32,16 @@ namespace KarateClub.Api.Controllers.Member
         public async Task<ActionResult<MemberDetailsDto>> GetMemberById(int id)
         {
             return Ok(await _getMemberHandler.ExecuteAsync(new GetMemberQuery(id)));
+        }
+
+        [Authorize(Policy = Permissions.Members.View)]
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetMembers()
+        {
+            return Ok(await _getMembersHandler.ExecuteAsync(new GetMembersQuery()));
         }
     }
 }
