@@ -42,6 +42,11 @@ namespace KarateClub.Domain.Entities
             return new Member(id, person.Id, person, emergencyContactInfo, isActive, beltRank.Id, beltRank);
         }
 
+        public static Member LoadWithPerson(int id, Person person, string? emergencyContactInfo, bool isActive, int beltRankId)
+        {
+            return new Member(id, person.Id, person, emergencyContactInfo, isActive, beltRankId, null);
+        }
+
         public static Member Load(int id, int personId, string emergencyContactInfo, bool isActive, int lastBeltRankID)
         {
             return new Member(id, personId, null, emergencyContactInfo, isActive, lastBeltRankID, null);

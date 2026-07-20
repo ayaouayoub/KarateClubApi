@@ -126,6 +126,8 @@ namespace KarateClub.Api
 
             builder.Services.AddScoped<UpdateEmergencyContactInfoHandler>();
 
+            builder.Services.AddScoped<GetInstructorMembersHandler>();
+
             builder.Services.AddInfrastructure();
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

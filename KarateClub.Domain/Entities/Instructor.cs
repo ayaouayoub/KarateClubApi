@@ -45,6 +45,11 @@ namespace KarateClub.Domain.Entities
             return new Instructor(id, person.Id, person, qualification, isActive, beltRank.Id, beltRank, hireDate);
         }
 
+        public static Instructor LoadWithPerson(int id, Person person, string qualification, bool isActive, int beltRankId, DateTime hireDate)
+        {
+            return new Instructor(id, person.Id, person, qualification, isActive, beltRankId, null, hireDate);
+        }
+
         public static Instructor Load(int id, int personId, string qualification, bool isActive, int CurrentBeltRankID, DateTime hireDate)
         {
             return new Instructor(id, personId, null, qualification, isActive, CurrentBeltRankID, null, hireDate);

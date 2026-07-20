@@ -22,8 +22,9 @@ namespace KarateClub.Api.Controllers.Instructor
         private readonly ActivateInstructorHandler _activateInstructorHandler;
         private readonly UpdateCurrentBletRankHandler _updateCurrentBletRankHandler;
         private readonly CreateInstructorHandler _createInstructorHandler;
+        private readonly GetInstructorMembersHandler _getInstructorMembersHandler;
 
-        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler, ActivateInstructorHandler activateInstructorHandler, UpdateCurrentBletRankHandler updateCurrentBletRankHandler, CreateInstructorHandler createInstructorHandler)
+        public InstructorsController(GetInstructorHandler getInstructorHandler, GetInstructorsHandler getInstructorsHandler, DeactivateInstructorHandler deactivateInstructorHandler, ActivateInstructorHandler activateInstructorHandler, UpdateCurrentBletRankHandler updateCurrentBletRankHandler, CreateInstructorHandler createInstructorHandler, GetInstructorMembersHandler getInstructorMembersHandler)
         {
             _getInstructorHandler = getInstructorHandler;
             _getInstructorsHandler = getInstructorsHandler;
@@ -31,6 +32,7 @@ namespace KarateClub.Api.Controllers.Instructor
             _activateInstructorHandler = activateInstructorHandler;
             _updateCurrentBletRankHandler = updateCurrentBletRankHandler;
             _createInstructorHandler = createInstructorHandler;
+            _getInstructorMembersHandler = getInstructorMembersHandler;
         }
 
         [Authorize(Policy = Permissions.Instructors.View)]
@@ -113,6 +115,18 @@ namespace KarateClub.Api.Controllers.Instructor
             InstructorDto instructor = await _createInstructorHandler.ExecuteAsync(command);
 
             return CreatedAtAction(nameof(GetInstructorById), new { id = instructor.Id }, instructor);
+        }
+
+        [Authorize(Policy = Permissions.Instructors.View)]
+        [HttpGet("{id:int}/members")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IEnumerable<InstructorMembersDto>>> GetInstructorMembers(int id)
+        {
+            return Ok(await _getInstructorMembersHandler.ExecuteAsync(new GetInstructorMembersQuery(id)));
         }
     }
 }
