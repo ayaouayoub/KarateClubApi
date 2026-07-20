@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using KarateClub.Application.Handlers.Member.Commands;
 using KarateClub.Api.Controllers.Instructor.Requests;
 using KarateClub.Api.Controllers.Member.Requests;
+using KarateClub.Application.Handlers.Instructor.Queries;
+using KarateClub.Application.Handlers.Instructor;
 
 namespace KarateClub.Api.Controllers.Member
 {
@@ -20,8 +22,9 @@ namespace KarateClub.Api.Controllers.Member
         private readonly ActivateMemberHandler _activateMemberHandler;
         private readonly UpdateMemberCurrentBletRankHandler _updateMemberCurrentBletRankHandler;
         private readonly UpdateEmergencyContactInfoHandler _updateEmergencyContactInfoHandler;
+        private readonly GetMemberInstructorsHandler _getMemberInstructorsHandler;
 
-        public MembersController(GetMemberHandler getMemberHandler, GetMembersHandler getMembersHandler, DeactivateMemberHandler deactivateMemberHandler, ActivateMemberHandler activateMemberHandler, UpdateMemberCurrentBletRankHandler updateMemberCurrentBletRankHandler, UpdateEmergencyContactInfoHandler updateEmergencyContactInfoHandler)
+        public MembersController(GetMemberHandler getMemberHandler, GetMembersHandler getMembersHandler, DeactivateMemberHandler deactivateMemberHandler, ActivateMemberHandler activateMemberHandler, UpdateMemberCurrentBletRankHandler updateMemberCurrentBletRankHandler, UpdateEmergencyContactInfoHandler updateEmergencyContactInfoHandler, GetMemberInstructorsHandler getMemberInstructorsHandler)
         {
             _getMemberHandler = getMemberHandler;
             _getMembersHandler = getMembersHandler;
@@ -29,6 +32,7 @@ namespace KarateClub.Api.Controllers.Member
             _activateMemberHandler = activateMemberHandler;
             _updateMemberCurrentBletRankHandler = updateMemberCurrentBletRankHandler;
             _updateEmergencyContactInfoHandler = updateEmergencyContactInfoHandler;
+            _getMemberInstructorsHandler = getMemberInstructorsHandler;
         }
 
         [Authorize(Policy = Permissions.Members.View)]
@@ -103,6 +107,18 @@ namespace KarateClub.Api.Controllers.Member
         {
             await _updateEmergencyContactInfoHandler.ExecuteAsync(new UpdateEmergencyContactInfoCommand(id, request.EmergencyContactInfo));
             return NoContent();
+        }
+
+        [Authorize(Policy = Permissions.Members.View)]
+        [HttpGet("{id:int}/instructors")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<IEnumerable<MemberInstructorsDto>>> GetMemberInstructors(int id)
+        {
+            return Ok(await _getMemberInstructorsHandler.ExecuteAsync(new GetMemberInstructorsQuery(id)));
         }
     }
 }

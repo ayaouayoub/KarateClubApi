@@ -46,8 +46,8 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
                     id: (int)reader["MemberID"],
                     person: person,
                     emergencyContactInfo: (string)reader["EmergencyContactInfo"],
-                    isActive: (bool)reader["IsActive"],
-                    beltRankId: (int)reader["CurrentBeltRankID"]
+                    isActive: (bool)reader["IsActiveMember"],
+                    beltRankId: (int)reader["LastBeltRank"]
                 );
 
                 memberInstructor.Add
@@ -64,9 +64,52 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             return memberInstructor;
         }
 
-        public Task<IReadOnlyList<MemberInstructor>> GetByMemberIdAsync(int memberId)
+        public async Task<IReadOnlyList<MemberInstructor>> GetByMemberIdAsync(int memberId)
         {
-            throw new NotImplementedException();
+            List<MemberInstructor> memberInstructor = new();
+
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+            using SqlCommand command = new("usp_GetByMemberId", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@MemberId", memberId);
+
+            await connection.OpenAsync();
+
+            using SqlDataReader reader = await command.ExecuteReaderAsync();
+
+            while (await reader.ReadAsync())
+            {
+                Person person = Person.Load
+                (
+                    id: (int)reader["InstructorPersonId"],
+                    name: (string)reader["InstructorName"],
+                    address: reader["InstructorAddress"] as string,
+                    email: new Email((string)reader["InstructorEmail"])
+                );
+
+                Instructor instructor = Instructor.LoadWithPerson
+                (
+                    id: (int)reader["InstructorID"],
+                    person: person,
+                    qualification: (string)reader["Qualification"],
+                    isActive: (bool)reader["IsActiveInstructor"],
+                    hireDate: (DateTime)reader["HireDate"],
+                    beltRankId: (int)reader["CurrentBeltRankID"]
+                );
+
+                memberInstructor.Add
+                (
+                    MemberInstructor.LoadWithInstructor
+                    (
+                        memberId: (int)reader["MemberID"],
+                        instructor: instructor,
+                        assignDate: (DateTime)reader["AssignDate"]
+                    )
+                );
+            }
+
+            return memberInstructor;
         }
     }
 }

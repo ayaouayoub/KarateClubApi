@@ -15,13 +15,11 @@ namespace KarateClub.Application.Handlers.Instructor
     {
         private readonly IMemberInstructorRepository _memberInstructorRepository;
         private readonly IInstructorRepository _instructorRepository;
-        private readonly IMemberRepository _memberRepository;
 
-        public GetInstructorMembersHandler(IMemberInstructorRepository memberInstructorRepository, IInstructorRepository instructorRepository, IMemberRepository memberRepository)
+        public GetInstructorMembersHandler(IMemberInstructorRepository memberInstructorRepository, IInstructorRepository instructorRepository)
         {
             _memberInstructorRepository = memberInstructorRepository;
             _instructorRepository = instructorRepository;
-            _memberRepository = memberRepository;
         }
 
         public async Task<IEnumerable<InstructorMembersDto>> ExecuteAsync(GetInstructorMembersQuery query)
