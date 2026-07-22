@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KarateClub.Application.Handlers.Member.Commands;
 using KarateClub.Application.Interfaces.Repositories;
 using KarateClub.Domain.Entities;
 using KarateClub.Domain.ValueObjs;
@@ -159,6 +160,37 @@ namespace KarateClub.Infrastructure.Persistence.Repositories
             }
 
             return members;
+        }
+
+        public async Task<int> RegisterAsync(RegisterMemberCommand registerMemberCommand)
+        {
+            using SqlConnection connection = _connectionFactory.CreateConnection();
+
+            using SqlCommand command = new("usp_RegisterMember", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@PersonID", registerMemberCommand.PersonId);
+            command.Parameters.AddWithValue("@EmergencyContactInfo", registerMemberCommand.EmergencyContactInfo);
+            command.Parameters.AddWithValue("@SubscriptionPlanID", registerMemberCommand.SubscriptionPlanId);
+            command.Parameters.AddWithValue("@PaidAmount", registerMemberCommand.PaidAmount);
+
+            DataTable table = new();
+
+            table.Columns.Add("InstructorID", typeof(int));
+
+            foreach (int id in registerMemberCommand.InstructorIds) table.Rows.Add(id);
+
+            SqlParameter instructors = command.Parameters.AddWithValue("@InstructorIds", table);
+
+            instructors.SqlDbType = SqlDbType.Structured;
+            instructors.TypeName = "InstructorIds";
+
+            await connection.OpenAsync();
+
+            object? result = await command.ExecuteScalarAsync();
+
+            return Convert.ToInt32(result);
         }
 
         public async Task<bool> UpdateCurrentBletRankAsync(int memberId, int beltRankId)
