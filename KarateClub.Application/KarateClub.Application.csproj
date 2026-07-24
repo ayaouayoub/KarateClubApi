@@ -14,4 +14,9 @@
     <ProjectReference Include="..\KarateClub.Domain\KarateClub.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\BeltTest\Queries\" />
+    <Folder Include="Handlers\SubscriptionPeriod\Commands\" />
+  </ItemGroup>
+
 </Project>

@@ -15,6 +15,7 @@ using KarateClub.Application.Handlers.SubscriptionPlan;
 using KarateClub.Application.Handlers.Instructor;
 using KarateClub.Application.Handlers.Member;
 using KarateClub.Application.Handlers.Member.Commands;
+using KarateClub.Application.Handlers.SubscriptionPeriod;
 
 namespace KarateClub.Api
 {
@@ -131,6 +132,8 @@ namespace KarateClub.Api
             builder.Services.AddScoped<GetMemberInstructorsHandler>();
 
             builder.Services.AddScoped<RegisterMemberHandler>();
+
+            builder.Services.AddScoped<GetMemberCurrentPeriodHandler>();
 
             builder.Services.AddInfrastructure();
 

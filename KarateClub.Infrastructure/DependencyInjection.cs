@@ -43,6 +43,10 @@ namespace KarateClub.Infrastructure
 
             services.AddScoped<IMemberInstructorRepository, MemberInstructorRepository>();
 
+            services.AddScoped<IBeltTestRepository, BeltTestRepository>();
+
+            services.AddScoped<ISubscriptionPeriodRepository, SubscriptionPeriodRepository>();
+
             return services;
         }
     }
